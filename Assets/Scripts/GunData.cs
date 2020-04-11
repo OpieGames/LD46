@@ -22,10 +22,13 @@ public class GunData : ScriptableObject
     public WeaponType Type = WeaponType.FullAutoRifle;
     public bool IsProjectile = false;
     // public bool ThrowAwayRemainingAmmoInClipOnReload = false;
-    public float Damage = 10f;
+    public int Damage = 10;
     public float FireRate = 240f; // in RoundsPerMinute
     public float ReloadTime = 1.5f; // in Seconds
+    public float Range = 100.0f; // in Metres
     public int MagazineSize = 30;
     public int ReserveAmmoMax = 90;
     public int ReserveAmmoInit = 90;
+
+    
 }

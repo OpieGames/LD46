@@ -75,7 +75,7 @@ public class WeaponBob : MonoBehaviour
             float MaxLandingSpeed = 16.0f;
             float LandingStr = Mathf.Max( Mathf.Pow( Mathf.Clamp( Mathf.Abs(Movement.landingVelocity), 0.0f, MaxLandingSpeed) / MaxLandingSpeed, 1.5f ), 0.1f);
             float LandingSpeed = 1.0f - LandingStr;
-            Debug.Log("VEL: " + Movement.landingVelocity + " SCL: " + Mathf.Clamp( Mathf.Abs(Movement.landingVelocity), 0.0f, MaxLandingSpeed) / MaxLandingSpeed + " FNL: " + LandingStr);
+            // Debug.Log("VEL: " + Movement.landingVelocity + " SCL: " + Mathf.Clamp( Mathf.Abs(Movement.landingVelocity), 0.0f, MaxLandingSpeed) / MaxLandingSpeed + " FNL: " + LandingStr);
             Anim.SetFloat("LandingStr",   LandingStr);
             Anim.SetFloat("LandingSpeed",   LandingSpeed);
             Anim.SetTrigger("Land");
