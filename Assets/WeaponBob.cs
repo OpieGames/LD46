@@ -56,7 +56,7 @@ public class WeaponBob : MonoBehaviour
         bool IsGrounded = Movement.IsGrounded();
         if (MoveSpeed > 0.0f && IsGrounded)
         {
-            MoveSpdFrequencyMult = Mathf.Max(MoveSpdScalingEnabledMin, ( (Mathf.Pow( MoveSpeed, 0.5f) / 0.5f ) * MovementSpeedScaling ) );
+            MoveSpdFrequencyMult = Mathf.Max(MoveSpdScalingEnabledMin, ( (Mathf.Pow( MoveSpeed, 0.8f) / 0.25f ) * MovementSpeedScaling ) );
             MoveSpdMagMult = Mathf.Max( ( 1.0f - (Mathf.Min(MoveSpeed, 10.0f) / 10.0f) ) * MovementSpeedScaling, 0.0f);
         } else {
             MoveSpdFrequencyMult = MoveSpdScalingDisabledMin;
