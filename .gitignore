@@ -10,6 +10,8 @@
 /[Ll]ogs/
 /[Mm]emoryCaptures/
 
+/OLDPLUGINS/
+
 # Never ignore Asset meta data
 !/[Aa]ssets/**/*.meta
 

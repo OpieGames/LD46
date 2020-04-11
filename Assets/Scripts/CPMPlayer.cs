@@ -70,7 +70,7 @@ public class CPMPlayer : MonoBehaviour
     public float landingVelocity = 0.0f;
 
     /*print() style */
-    public GUIStyle style;
+    // public GUIStyle style;
 
     /*FPS Stuff */
     public float fpsDisplayRate = 4.0f; // 4 updates per sec
@@ -396,14 +396,14 @@ public class CPMPlayer : MonoBehaviour
         playerVelocity.z += accelspeed * wishdir.z;
     }
 
-    private void OnGUI()
-    {
-        GUI.Label(new Rect(0, 0, 400, 100), "FPS: " + fps, style);
-        var ups = _controller.velocity;
-        ups.y = 0;
-        GUI.Label(new Rect(0, 15, 400, 100), "Speed: " + Mathf.Round(ups.magnitude * 100) / 100 + "ups", style);
-        GUI.Label(new Rect(0, 30, 400, 100), "Top Speed: " + Mathf.Round(playerTopVelocity * 100) / 100 + "ups", style);
-    }
+    // private void OnGUI()
+    // {
+    //     GUI.Label(new Rect(0, 0, 400, 100), "FPS: " + fps, style);
+    //     var ups = _controller.velocity;
+    //     ups.y = 0;
+    //     GUI.Label(new Rect(0, 15, 400, 100), "Speed: " + Mathf.Round(ups.magnitude * 100) / 100 + "ups", style);
+    //     GUI.Label(new Rect(0, 30, 400, 100), "Top Speed: " + Mathf.Round(playerTopVelocity * 100) / 100 + "ups", style);
+    // }
 
     public float GetSpeed()
     {
