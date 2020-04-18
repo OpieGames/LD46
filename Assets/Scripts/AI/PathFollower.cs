@@ -22,6 +22,8 @@ public class PathFollower : MonoBehaviour
             waypoints[i] = new Vector3(waypoints[i].x, transform.position.y, waypoints[i].z);
         }
 
+        transform.position = waypoints[0];
+
         StartCoroutine(FollowPath(waypoints));
     }
 
