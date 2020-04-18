@@ -12,12 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ece97afbfe5b23e4e9f5cbb9d63c9b39, type: 3}
   m_Name: TestRifle
   m_EditorClassIdentifier: 
-  Mesh: {fileID: -927199367670048503, guid: 7068cf70a46da7d4ea274922a83c71e6, type: 3}
+  Mesh: {fileID: 8511979936896591447, guid: 85721699e528fa3458104f0f378afd43, type: 3}
   Type: 2
   IsProjectile: 0
   Damage: 10
   FireRate: 240
   ReloadTime: 1.5
+  Range: 100
   MagazineSize: 30
   ReserveAmmoMax: 90
   ReserveAmmoInit: 90
