@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WeaponBob : MonoBehaviour
 {
-    public CPMPlayer Movement;
+    public CPMMovement Movement;
     public Animator Anim;
     public bool DoBob = true;
     [Range(0.0f, 1.0f)]
