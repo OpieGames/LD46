@@ -8,7 +8,6 @@ public class PathFollower : MonoBehaviour
     public float Speed = 5.0f;
     public float TurnSpeed = 90.0f;
     public float WaitAtPointTime = 0.0f;
-    public bool LoopPath = false;
 
     private void Start()
     {
@@ -32,7 +31,7 @@ public class PathFollower : MonoBehaviour
         Vector3 dirToLookTarget = (lookTarget - transform.position).normalized;
         float targetAngle = 90 - Mathf.Atan2(dirToLookTarget.z, dirToLookTarget.x) * Mathf.Rad2Deg;
 
-        while (Mathf.DeltaAngle(transform.eulerAngles.y, targetAngle) > 0.05f)
+        while (Mathf.Abs(Mathf.DeltaAngle(transform.eulerAngles.y, targetAngle)) >= 0.01f)
         {
             float angle = Mathf.MoveTowardsAngle(transform.eulerAngles.y, targetAngle, TurnSpeed * Time.deltaTime);
             transform.eulerAngles = Vector3.up * angle;
@@ -43,7 +42,7 @@ public class PathFollower : MonoBehaviour
     IEnumerator FollowPath(Vector3[] waypoints)
     {
         transform.position = waypoints[0];
-        int targetWaypointIndex = 1;
+        int targetWaypointIndex = 0;
         Vector3 targetWaypoint = waypoints[targetWaypointIndex];
         transform.LookAt(targetWaypoint);
 
@@ -52,16 +51,19 @@ public class PathFollower : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, targetWaypoint, Speed * Time.deltaTime);
             if (transform.position == targetWaypoint)
             {
-                int nextWaypointIndex = targetWaypointIndex + 1;
-                if (!LoopPath && nextWaypointIndex == waypoints.Length)
+                targetWaypointIndex = targetWaypointIndex + 1;
+                if (targetWaypointIndex == waypoints.Length)
                 {
                     CompletedPath();
                     yield break;
                 }
-                targetWaypointIndex = (targetWaypointIndex + 1) % waypoints.Length;
-                targetWaypoint = waypoints[targetWaypointIndex];
-                yield return new WaitForSeconds(WaitAtPointTime);
-                yield return StartCoroutine(TurnToFace(targetWaypoint));
+                else
+                {
+                    targetWaypoint = waypoints[targetWaypointIndex];
+                    Debug.Log("targetWaypoint: " + targetWaypoint);
+                    yield return new WaitForSeconds(WaitAtPointTime);
+                    yield return StartCoroutine(TurnToFace(targetWaypoint));
+                }
             }
             yield return null;
         }
@@ -99,9 +101,6 @@ public class PathFollower : MonoBehaviour
             Gizmos.DrawLine(prevPos, nextPos);
             prevPos = nextPos;
         }
-
-        if (LoopPath)
-            Gizmos.DrawLine(prevPos, startPos);
     }
 
 }
