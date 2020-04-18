@@ -19,7 +19,7 @@ public class PathFollower : MonoBehaviour
         for (int i = 0; i < waypoints.Length; i++)
         {
             waypoints[i] = PathHolder.GetChild(i).position;
-            waypoints[i] = new Vector3(waypoints[i].x, transform.position.y, waypoints[i].z);
+            waypoints[i] = new Vector3(waypoints[i].x, waypoints[i].y, waypoints[i].z);
         }
 
         transform.position = waypoints[0];
