@@ -8,6 +8,7 @@ public class PathFollower : MonoBehaviour
     public float Speed = 5.0f;
     public float TurnSpeed = 90.0f;
     public float WaitAtPointTime = 0.0f;
+    public bool LoopPath = false;
 
     private void Start()
     {
@@ -49,6 +50,12 @@ public class PathFollower : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, targetWaypoint, Speed * Time.deltaTime);
             if (transform.position == targetWaypoint)
             {
+                int nextWaypointIndex = targetWaypointIndex + 1;
+                if (!LoopPath && nextWaypointIndex == waypoints.Length)
+                {
+                    CompletedPath();
+                    yield break;
+                }
                 targetWaypointIndex = (targetWaypointIndex + 1) % waypoints.Length;
                 targetWaypoint = waypoints[targetWaypointIndex];
                 yield return new WaitForSeconds(WaitAtPointTime);
@@ -58,15 +65,41 @@ public class PathFollower : MonoBehaviour
         }
     }
 
+    private void CompletedPath()
+    {
+        Debug.Log("Path Completed");
+    }
+
     private void OnDrawGizmos()
     {
         Vector3 startPos = PathHolder.GetChild(0).position;
+        startPos.y += 1f;
         Vector3 prevPos = startPos;
-        foreach (Transform waypoint in PathHolder)
+        int waypointCount = PathHolder.childCount;
+
+        for (int i = 0; i < waypointCount; i++)
         {
-            Gizmos.DrawSphere(waypoint.position, 0.3f);
-            Gizmos.DrawLine(prevPos, waypoint.position);
-            prevPos = waypoint.position;
+            Vector3 nextPos = PathHolder.GetChild(i).position;
+            nextPos.y += 1f;
+            if (i == 0)
+            {
+                Gizmos.DrawIcon(nextPos, "pathnode_start.tga", false);
+            }
+            else if (i == waypointCount-1)
+            {
+                Gizmos.DrawIcon(nextPos, "pathnode_end.tga", false);
+            }
+            else
+            {
+                Gizmos.DrawIcon(nextPos, "pathnode.tga", false);
+            }
+            // 
+            Gizmos.DrawLine(prevPos, nextPos);
+            prevPos = nextPos;
         }
+
+        if (LoopPath)
+            Gizmos.DrawLine(prevPos, startPos);
     }
+
 }
