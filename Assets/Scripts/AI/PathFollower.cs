@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class PathFollower : MonoBehaviour
@@ -76,30 +77,36 @@ public class PathFollower : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Vector3 startPos = PathHolder.GetChild(0).position;
-        startPos.y += 0.3f;
-        Vector3 prevPos = startPos;
-        int waypointCount = PathHolder.childCount;
-
-        for (int i = 0; i < waypointCount; i++)
+        if (Application.isEditor)
         {
-            Vector3 nextPos = PathHolder.GetChild(i).position;
-            nextPos.y += 0.3f;
-            if (i == 0)
+            if (Camera.current == SceneView.lastActiveSceneView.camera || Camera.current == Camera.main)
             {
-                Gizmos.DrawIcon(nextPos, "pathnode_start.tga", false);
+                Vector3 startPos = PathHolder.GetChild(0).position;
+                startPos.y += 0.3f;
+                Vector3 prevPos = startPos;
+                int waypointCount = PathHolder.childCount;
+
+                for (int i = 0; i < waypointCount; i++)
+                {
+                    Vector3 nextPos = PathHolder.GetChild(i).position;
+                    nextPos.y += 0.3f;
+                    if (i == 0)
+                    {
+                        Gizmos.DrawIcon(nextPos, "pathnode_start.tga", false);
+                    }
+                    else if (i == waypointCount - 1)
+                    {
+                        Gizmos.DrawIcon(nextPos, "pathnode_end.tga", false);
+                    }
+                    else
+                    {
+                        Gizmos.DrawIcon(nextPos, "pathnode.tga", false);
+                    }
+                    // 
+                    Gizmos.DrawLine(prevPos, nextPos);
+                    prevPos = nextPos;
+                }
             }
-            else if (i == waypointCount - 1)
-            {
-                Gizmos.DrawIcon(nextPos, "pathnode_end.tga", false);
-            }
-            else
-            {
-                Gizmos.DrawIcon(nextPos, "pathnode.tga", false);
-            }
-            // 
-            Gizmos.DrawLine(prevPos, nextPos);
-            prevPos = nextPos;
         }
     }
 
