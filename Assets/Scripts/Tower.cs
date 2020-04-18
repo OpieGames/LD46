@@ -75,6 +75,8 @@ public class Tower : MonoBehaviour
 
     private void OnDrawGizmos()
     {
+        if (!Pizza)
+            return;
         Gizmos.color = Color.red;
         Vector3 targetLoc = PredictedPizzaTarget();
         Gizmos.DrawLine(transform.position, targetLoc);
