@@ -20,6 +20,7 @@ public class Tower : MonoBehaviour
     [Range(0.0f, 40.0f)] public float Range = 10.0f;
     public float AttackTime = 3.0f;
     [Range(0.0f, 40.0f)] public float ProjectileSpeed = 15.0f;
+    [Range(0.0f, 0.1f)] public float ProjectileInaccuracy = 0.0f;
     void Start()
     {
         if (Projectile == null) { Debug.LogErrorFormat("{0}: Projectile reference is not set!", transform.name); }
@@ -53,10 +54,13 @@ public class Tower : MonoBehaviour
                     Vector3 spawnPos = transform.position;
                     spawnPos.y += 2.5f; // eh
                     GameObject proj = Instantiate(Projectile, spawnPos, Quaternion.identity);
-                    proj.transform.LookAt(Pizza.transform);
+
+                    Vector3 targetLoc = PredictedPizzaTarget();
+
+                    proj.transform.LookAt(targetLoc);
                     proj.GetComponent<Rigidbody>().AddForce(proj.transform.forward * ProjectileSpeed * 100);
 
-                    Destroy(proj, 3.0f);
+                    Destroy(proj, 5.0f);
                 }
                 break;
         }
@@ -72,10 +76,16 @@ public class Tower : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        var distance = (transform.position - Pizza.transform.position).magnitude;
-        var flightTime = distance / ProjectileSpeed;
-
-        Vector3 targetLoc = Pizza.transform.position + ((Pizza.transform.forward * Pizza.GetComponent<PathFollower>().CurrentSpeed) * flightTime);
+        Vector3 targetLoc = PredictedPizzaTarget();
         Gizmos.DrawLine(transform.position, targetLoc);
+    }
+
+    private Vector3 PredictedPizzaTarget()
+    {
+        float distance = (transform.position - Pizza.transform.position).magnitude;
+        float flightTime = distance / ProjectileSpeed;
+        flightTime += Random.Range(-ProjectileInaccuracy, ProjectileInaccuracy);
+
+        return Pizza.transform.position + ((Pizza.transform.forward * Pizza.GetComponent<PathFollower>().CurrentSpeed) * flightTime);
     }
 }
