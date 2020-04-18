@@ -73,19 +73,19 @@ public class PathFollower : MonoBehaviour
     private void OnDrawGizmos()
     {
         Vector3 startPos = PathHolder.GetChild(0).position;
-        startPos.y += 1f;
+        startPos.y += 0.3f;
         Vector3 prevPos = startPos;
         int waypointCount = PathHolder.childCount;
 
         for (int i = 0; i < waypointCount; i++)
         {
             Vector3 nextPos = PathHolder.GetChild(i).position;
-            nextPos.y += 1f;
+            nextPos.y += 0.3f;
             if (i == 0)
             {
                 Gizmos.DrawIcon(nextPos, "pathnode_start.tga", false);
             }
-            else if (i == waypointCount-1)
+            else if (i == waypointCount - 1)
             {
                 Gizmos.DrawIcon(nextPos, "pathnode_end.tga", false);
             }
