@@ -16,6 +16,7 @@ public class Tower : MonoBehaviour
     public GameObject Player;
     public GameObject Pizza;
     public GameObject Projectile;
+    public GameObject ProjectileHolder;
     [Header("Stats")]
     [Range(0.0f, 40.0f)] public float Range = 10.0f;
     public float AttackTime = 3.0f;
@@ -50,10 +51,8 @@ public class Tower : MonoBehaviour
             default:
                 if (distToPizza <= Range)
                 {
-                    Debug.LogFormat("{0} is in range of pizza! ({1})", transform.name, distToPizza);
-                    Vector3 spawnPos = transform.position;
-                    spawnPos.y += 2.5f; // eh
-                    GameObject proj = Instantiate(Projectile, spawnPos, Quaternion.identity);
+                    //Debug.LogFormat("{0} is in range of pizza! ({1})", transform.name, distToPizza);
+                    GameObject proj = Instantiate(Projectile, ProjectileHolder.transform.position, Quaternion.identity);
 
                     Vector3 targetLoc = PredictedPizzaTarget();
 
@@ -79,7 +78,7 @@ public class Tower : MonoBehaviour
             return;
         Gizmos.color = Color.red;
         Vector3 targetLoc = PredictedPizzaTarget();
-        Gizmos.DrawLine(transform.position, targetLoc);
+        Gizmos.DrawLine(ProjectileHolder.transform.position, targetLoc);
     }
 
     private Vector3 PredictedPizzaTarget()

@@ -1049,17 +1049,17 @@ PrefabInstance:
     - target: {fileID: 213214504189698934, guid: 49e9c2049d1150d41b12c2d7353dbbfd,
         type: 3}
       propertyPath: Range
-      value: 10
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 213214504189698934, guid: 49e9c2049d1150d41b12c2d7353dbbfd,
         type: 3}
       propertyPath: AttackTime
-      value: 3
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 213214504189698934, guid: 49e9c2049d1150d41b12c2d7353dbbfd,
         type: 3}
       propertyPath: ProjectileSpeed
-      value: 15
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 213214504189698934, guid: 49e9c2049d1150d41b12c2d7353dbbfd,
         type: 3}
