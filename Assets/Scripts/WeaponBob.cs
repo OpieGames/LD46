@@ -17,7 +17,7 @@ public class WeaponBob : MonoBehaviour
     [Range(MoveSpdScalingEnabledMin, 1.0f)]
     public float MovementSpeedScaling = 1.0f;
 
-    
+
 
     Vector3 StartingPoint;
 
@@ -45,7 +45,7 @@ public class WeaponBob : MonoBehaviour
         {
             Bob();
         }
-        
+
     }
 
     void Bob()
@@ -56,32 +56,35 @@ public class WeaponBob : MonoBehaviour
         bool IsGrounded = Movement.IsGrounded();
         if (MoveSpeed > 0.0f && IsGrounded)
         {
-            MoveSpdFrequencyMult = Mathf.Max(MoveSpdScalingEnabledMin, ( (Mathf.Pow( MoveSpeed, 0.8f) / 0.25f ) * MovementSpeedScaling ) );
-            MoveSpdMagMult = Mathf.Max( ( 1.0f - (Mathf.Min(MoveSpeed, 10.0f) / 10.0f) ) * MovementSpeedScaling, 0.0f);
-        } else {
+            MoveSpdFrequencyMult = Mathf.Max(MoveSpdScalingEnabledMin, ((Mathf.Pow(MoveSpeed, 0.8f) / 0.25f) * MovementSpeedScaling));
+            MoveSpdMagMult = Mathf.Max((1.0f - (Mathf.Min(MoveSpeed, 10.0f) / 10.0f)) * MovementSpeedScaling, 0.0f);
+        }
+        else
+        {
             MoveSpdFrequencyMult = MoveSpdScalingDisabledMin;
             MoveSpdMagMult = 1.0f;
         }
-        
-        Accumulator += MoveSpdFrequencyMult*BobFrequency*Time.deltaTime;
 
-        transform.localPosition = new Vector3(StartingPoint.x, StartingPoint.y + (Mathf.Sin(Accumulator) * (MoveSpdMagMult*BobMagnitude*0.1f)), StartingPoint.z);
+        Accumulator += MoveSpdFrequencyMult * BobFrequency * Time.deltaTime;
+
+        transform.localPosition = new Vector3(StartingPoint.x, StartingPoint.y + (Mathf.Sin(Accumulator) * (MoveSpdMagMult * BobMagnitude * 0.1f)), StartingPoint.z);
 
         if (Movement.jumpedThisFrame)
         {
             Anim.SetTrigger("Jump");
-        } else if (Movement.landedThisFrame)
+        }
+        else if (Movement.landedThisFrame)
         {
             float MaxLandingSpeed = 16.0f;
-            float LandingStr = Mathf.Max( Mathf.Pow( Mathf.Clamp( Mathf.Abs(Movement.landingVelocity), 0.0f, MaxLandingSpeed) / MaxLandingSpeed, 1.5f ), 0.1f);
+            float LandingStr = Mathf.Max(Mathf.Pow(Mathf.Clamp(Mathf.Abs(Movement.landingVelocity), 0.0f, MaxLandingSpeed) / MaxLandingSpeed, 1.5f), 0.1f);
             float LandingSpeed = 1.0f - LandingStr;
             // Debug.Log("VEL: " + Movement.landingVelocity + " SCL: " + Mathf.Clamp( Mathf.Abs(Movement.landingVelocity), 0.0f, MaxLandingSpeed) / MaxLandingSpeed + " FNL: " + LandingStr);
-            Anim.SetFloat("LandingStr",   LandingStr);
-            Anim.SetFloat("LandingSpeed",   LandingSpeed);
+            Anim.SetFloat("LandingStr", LandingStr);
+            Anim.SetFloat("LandingSpeed", LandingSpeed);
             Anim.SetTrigger("Land");
         }
 
-        transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y + (Mathf.Sin(Accumulator) * (BobMagnitude*0.1f)), transform.localPosition.z);
-        
+        transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y + (Mathf.Sin(Accumulator) * (BobMagnitude * 0.1f)), transform.localPosition.z);
+
     }
 }
