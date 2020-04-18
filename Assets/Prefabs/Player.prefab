@@ -335,6 +335,8 @@ GameObject:
   - component: {fileID: 8929099141729651117}
   - component: {fileID: 8929099141729651118}
   - component: {fileID: 8929099141729651119}
+  - component: {fileID: 1080255546662118871}
+  - component: {fileID: 5393508524609271499}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -387,8 +389,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c395fba4da8e513498cc287f01870366, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerView: {fileID: 8929099141118968884}
-  playerViewYOffset: 0.8
+  playerView: {fileID: 0}
+  playerViewYOffset: 0.6
   xMouseSensitivity: 30
   yMouseSensitivity: 30
   gravity: 20
@@ -402,10 +404,37 @@ MonoBehaviour:
   sideStrafeAcceleration: 50
   sideStrafeSpeed: 1
   jumpSpeed: 8
-  holdJumpToBhop: 1
+  holdJumpToBhop: 0
   jumpedThisFrame: 0
   landedThisFrame: 0
   minimumAirTimeForLanding: 0.5
   airTime: 0
   landingVelocity: 0
   fpsDisplayRate: 4
+--- !u!114 &1080255546662118871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8929099141729651112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8371876b3b9f5141989fbc6dd3b506a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventory: 00000000
+--- !u!136 &5393508524609271499
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8929099141729651112}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
