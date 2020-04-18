@@ -9,6 +9,7 @@ public class PathFollower : MonoBehaviour
     public float Speed = 5.0f;
     public float TurnSpeed = 90.0f;
     public float WaitAtPointTime = 0.0f;
+    public float CurrentSpeed;
 
     private void Start()
     {
@@ -32,6 +33,7 @@ public class PathFollower : MonoBehaviour
         Vector3 dirToLookTarget = (lookTarget - transform.position).normalized;
         float targetAngle = 90 - Mathf.Atan2(dirToLookTarget.z, dirToLookTarget.x) * Mathf.Rad2Deg;
 
+        CurrentSpeed = 0.0f;
         while (Mathf.Abs(Mathf.DeltaAngle(transform.eulerAngles.y, targetAngle)) >= 0.01f)
         {
             float angle = Mathf.MoveTowardsAngle(transform.eulerAngles.y, targetAngle, TurnSpeed * Time.deltaTime);
@@ -49,10 +51,12 @@ public class PathFollower : MonoBehaviour
 
         while (true)
         {
+            CurrentSpeed = Speed;
             transform.position = Vector3.MoveTowards(transform.position, targetWaypoint, Speed * Time.deltaTime);
             if (transform.position == targetWaypoint)
             {
                 targetWaypointIndex = targetWaypointIndex + 1;
+                CurrentSpeed = 0.0f;
                 if (targetWaypointIndex == waypoints.Length)
                 {
                     CompletedPath();

@@ -68,4 +68,14 @@ public class Tower : MonoBehaviour
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, Range);
     }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        var distance = (transform.position - Pizza.transform.position).magnitude;
+        var flightTime = distance / ProjectileSpeed;
+
+        Vector3 targetLoc = Pizza.transform.position + ((Pizza.transform.forward * Pizza.GetComponent<PathFollower>().CurrentSpeed) * flightTime);
+        Gizmos.DrawLine(transform.position, targetLoc);
+    }
 }
