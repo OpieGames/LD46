@@ -39,7 +39,7 @@ struct Cmd
 }
 
 [RequireComponent(typeof(CharacterController))]
-public class CPMPlayer : MonoBehaviour
+public class CPMMovement : MonoBehaviour
 {
     public Transform playerView;     // Camera
     public float playerViewYOffset = 0.6f; // The height at which the camera is bound to
