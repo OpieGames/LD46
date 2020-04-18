@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5125073521354776617}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Shield
-  m_TagString: Untagged
+  m_TagString: FPS_Models
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -103,11 +103,31 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shield
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: fa15eff41d03c144795ceb97498cb331,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -374068645640430031, guid: fa15eff41d03c144795ceb97498cb331,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -33442209506766558, guid: fa15eff41d03c144795ceb97498cb331,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 2920498633048545672, guid: fa15eff41d03c144795ceb97498cb331,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 793986ea87a6bba45a5a0a0b3410387b, type: 2}
+    - target: {fileID: 5283373094014091215, guid: fa15eff41d03c144795ceb97498cb331,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5609469497257208134, guid: fa15eff41d03c144795ceb97498cb331,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -123,6 +143,16 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 793986ea87a6bba45a5a0a0b3410387b, type: 2}
+    - target: {fileID: 7553217733172594982, guid: fa15eff41d03c144795ceb97498cb331,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8522151722831957924, guid: fa15eff41d03c144795ceb97498cb331,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fa15eff41d03c144795ceb97498cb331, type: 3}
 --- !u!4 &8521499451139795339 stripped
