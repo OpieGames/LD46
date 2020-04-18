@@ -1118,17 +1118,17 @@ PrefabInstance:
     - target: {fileID: 213214504189698934, guid: 49e9c2049d1150d41b12c2d7353dbbfd,
         type: 3}
       propertyPath: Range
-      value: 20
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 213214504189698934, guid: 49e9c2049d1150d41b12c2d7353dbbfd,
         type: 3}
       propertyPath: AttackTime
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 213214504189698934, guid: 49e9c2049d1150d41b12c2d7353dbbfd,
         type: 3}
       propertyPath: ProjectileSpeed
-      value: 12
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 213214504189698934, guid: 49e9c2049d1150d41b12c2d7353dbbfd,
         type: 3}
@@ -1140,6 +1140,12 @@ PrefabInstance:
       propertyPath: ProjectileInaccuracy
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 213214504189698934, guid: 49e9c2049d1150d41b12c2d7353dbbfd,
+        type: 3}
+      propertyPath: Projectile
+      value: 
+      objectReference: {fileID: 6258366091169480822, guid: c6fdc82286cebbc4293fd0fe5478dec3,
+        type: 3}
     - target: {fileID: 213214504189698935, guid: 49e9c2049d1150d41b12c2d7353dbbfd,
         type: 3}
       propertyPath: m_Name
