@@ -6,7 +6,6 @@ public class Player : MonoBehaviour
 {
     public int[] inventory = new int[(int)Pickup.Kind.NumKinds];
     public GameObject Shield;
-    private bool shieldActive = false;
     // Start is called before the first frame update
     void Start()
     {
