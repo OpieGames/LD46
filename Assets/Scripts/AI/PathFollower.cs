@@ -77,7 +77,9 @@ public class PathFollower : MonoBehaviour
     private void CompletedPath()
     {
         Debug.Log("Path Completed");
-        GameObject.FindObjectOfType<LevelManager>().NextLevel();
+        LevelManager lm = GameObject.FindObjectOfType<LevelManager>();
+        if (lm)
+            lm.NextLevel();
     }
 
     #if UNITY_EDITOR
