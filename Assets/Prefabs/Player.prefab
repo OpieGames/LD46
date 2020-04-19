@@ -273,7 +273,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 15415
+    m_Bits: 31799
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -391,7 +391,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerView: {fileID: 0}
-  playerViewYOffset: 0.6
+  playerViewYOffset: 0.4
   xMouseSensitivity: 30
   yMouseSensitivity: 30
   gravity: 20
