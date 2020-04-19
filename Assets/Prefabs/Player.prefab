@@ -427,6 +427,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventory: 00000000
   Shield: {fileID: 4933442701197892371}
+  MaxParryTime: 0.3
 --- !u!136 &5393508524609271499
 CapsuleCollider:
   m_ObjectHideFlags: 0
