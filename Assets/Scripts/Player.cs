@@ -16,10 +16,12 @@ public class Player : MonoBehaviour
         if (Input.GetButton("Block"))
         {
             Shield.SetActive(true);
+            gameObject.GetComponent<CPMMovement>().maxTopSpeed = 3.0f;
         }
         else
         {
             Shield.SetActive(false);
+            gameObject.GetComponent<CPMMovement>().ResetMaxTopSpeed();
         }
 
 

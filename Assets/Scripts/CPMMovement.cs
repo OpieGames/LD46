@@ -204,9 +204,11 @@ public class CPMMovement : MonoBehaviour
             transform.position.y + playerViewYOffset,
             transform.position.z);
 
-        if (playerVelocity.magnitude > maxTopSpeed)
+        Vector2 HoriVel = new Vector2(playerVelocity.x, playerVelocity.z);
+        if (HoriVel.magnitude > maxTopSpeed)
         {
-            playerVelocity = playerVelocity.normalized*maxTopSpeed;
+            HoriVel = HoriVel.normalized*maxTopSpeed;
+            playerVelocity = new Vector3(HoriVel.x, playerVelocity.y, HoriVel.y);
         }
     }
 
