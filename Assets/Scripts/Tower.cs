@@ -72,13 +72,10 @@ public class Tower : MonoBehaviour
             if (hit.transform.gameObject.layer == layerPizza)
             {
                 pizzaDir = PredictedPizzaTarget() - ProjectileHolder.transform.position;
-                if (Physics.Raycast(ProjectileHolder.transform.position, pizzaDir, out hit, Range, layersToIgnore))
+                if (!Physics.Raycast(ProjectileHolder.transform.position, pizzaDir, out hit, pizzaDir.magnitude, layersToIgnore))
                 {
-                    if (hit.transform.gameObject.layer == layerPizza)
-                    {
-                        return true;
-                    }
 
+                        return true;
                     // Debug.DrawRay(ProjectileHolder.transform.position, pizzaDir, Color.yellow, 0.1f);
                 }
             }
