@@ -6,17 +6,18 @@ public class Player : MonoBehaviour
 {
     public int[] inventory = new int[(int)Pickup.Kind.NumKinds];
     public GameObject Shield;
-    public float MaxParryTime = 0.3f;
+    public float ParryHoldTime = 0.3f;
+    public float ParryRefillRatio = 0.5f;
 
     private PlayerShield playerShield;
     private CPMMovement playerMovement;
-    private float curParryingTime = 0.0f;
+    private float curParryingHoldTime = 0.0f;
     private bool parryingActive = false;
     private bool parryButtonReset = true;
     void Start()
     {
         Shield.SetActive(false);
-        curParryingTime = 0.0f;
+        curParryingHoldTime = 0.0f;
 
         playerShield = Shield.GetComponent<PlayerShield>();
         playerMovement = gameObject.GetComponent<CPMMovement>();
@@ -30,17 +31,17 @@ public class Player : MonoBehaviour
         }
         else if (Input.GetButton("Parry") && parryButtonReset)
         {
-            if (curParryingTime <= 0.001f)
+            if (curParryingHoldTime <= 0.001f)
             {
                 ShieldParry();
-                curParryingTime += 1.0f * Time.deltaTime;
+                curParryingHoldTime += 1.0f * Time.deltaTime;
                 parryingActive = true;
             }
             else if (parryingActive)
             {
                 ShieldParry();
-                curParryingTime += 1.0f * Time.deltaTime;
-                if (curParryingTime >= MaxParryTime)
+                curParryingHoldTime += 1.0f * Time.deltaTime;
+                if (curParryingHoldTime >= ParryHoldTime)
                 {
                     parryingActive = false;
                     parryButtonReset = false;
@@ -52,19 +53,24 @@ public class Player : MonoBehaviour
                 ShieldInactive();
                 parryingActive = false;
                 parryButtonReset = false;
-                curParryingTime = Mathf.Clamp(curParryingTime - 1.0f * Time.deltaTime, 0.0f, MaxParryTime);
+                curParryingHoldTime = Mathf.Clamp(curParryingHoldTime - ParryRefillRatio * Time.deltaTime, 0.0f, ParryHoldTime);
             }
         }
         else
         {
             ShieldInactive();
-            curParryingTime = Mathf.Clamp(curParryingTime - 1.0f * Time.deltaTime, 0.0f, MaxParryTime);
+            curParryingHoldTime = Mathf.Clamp(curParryingHoldTime - ParryRefillRatio * Time.deltaTime, 0.0f, ParryHoldTime);
         }
 
         if (Input.GetButtonUp("Parry"))
         {
             parryButtonReset = true;
         }
+    }
+
+    public float CurrentParryStamina()
+    {
+        return curParryingHoldTime;
     }
 
     private void ShieldInactive()
