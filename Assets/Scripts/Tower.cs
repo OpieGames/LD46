@@ -70,7 +70,7 @@ public class Tower : MonoBehaviour
                     if (shotCount >= 2)
                     {
                         proj.Parryable = true;
-                        projGO.GetComponent<Rigidbody>().AddForce(projGO.transform.forward * ProjectileSpeed * 75);
+                        projGO.GetComponent<Rigidbody>().AddForce(projGO.transform.forward * ProjectileSpeed * 90);
                         projGO.GetComponentInChildren<MeshRenderer>().material.color = Color.red;
                         shotCount = 0;
                         projGO.GetComponentInChildren<MeshRenderer>().sharedMaterial.SetColor("albedo_", new Color(0.8679245f, 0.05322179f, 0.4156687f, 1.0f));
@@ -78,7 +78,7 @@ public class Tower : MonoBehaviour
                     else
                     {
                         proj.Parryable = false;
-                        projGO.GetComponent<Rigidbody>().AddForce(projGO.transform.forward * ProjectileSpeed * 75);
+                        projGO.GetComponent<Rigidbody>().AddForce(projGO.transform.forward * ProjectileSpeed * 90);
                         shotCount++;
                     }
 
