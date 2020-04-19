@@ -148,6 +148,6 @@ public class Tower : MonoBehaviour
         float flightTime = distance / ProjectileSpeed;
         flightTime += Random.Range(-ProjectileInaccuracy, ProjectileInaccuracy);
 
-        return pizzaPos + ((Pizza.transform.forward * Pizza.GetComponent<PathFollower>().CurrentSpeed) * flightTime);
+        return pizzaPos + ((Pizza.transform.forward * (Pizza.GetComponent<PathFollower>().CurrentSpeed * 0.6f)) * flightTime);
     }
 }
