@@ -33,6 +33,7 @@ public class Tower : MonoBehaviour
     private int layerPizza;
     public LayerMask layersToIgnore;
     private bool losToPizza = false;
+    private AudioSource sound;
 
     void Start()
     {
@@ -47,6 +48,7 @@ public class Tower : MonoBehaviour
         if (Pizza == null) { Debug.LogErrorFormat("{0}: GameObject with tag 'Pizza' couldn't be found in the scene!", transform.name); }
 
         InvokeRepeating(nameof(TowerTick), 0.0f, AttackTime);
+        sound = gameObject.GetComponent<AudioSource>();
 
     }
 
@@ -83,6 +85,7 @@ public class Tower : MonoBehaviour
                     GameObject projGO = Instantiate(Projectile, ProjectileHolder.transform.position, Quaternion.identity);
                     BaseProjectile proj = projGO.GetComponent<BaseProjectile>();
                     proj.TowerFiredFrom = this.gameObject;
+                    sound.Play();
 
                     Vector3 targetLoc = PredictedPizzaTarget();
                     projGO.transform.LookAt(targetLoc);
