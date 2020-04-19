@@ -59,6 +59,9 @@ MonoBehaviour:
   AttackTime: 4
   ProjectileSpeed: 5
   ProjectileInaccuracy: 0
+  layersToIgnore:
+    serializedVersion: 2
+    m_Bits: 19456
 --- !u!54 &8555991076842603272
 Rigidbody:
   m_ObjectHideFlags: 0

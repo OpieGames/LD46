@@ -31,13 +31,13 @@ public class Tower : MonoBehaviour
 
     private int shotCount = 0;
     private int layerPizza;
-    private int layerTower;
+    public LayerMask layersToIgnore;
     private bool losToPizza = false;
 
     void Start()
     {
         layerPizza = LayerMask.NameToLayer("Pizza");
-        layerTower = ~LayerMask.NameToLayer("Tower");
+        layersToIgnore = ~layersToIgnore.value;
         
         if (Projectile == null) { Debug.LogErrorFormat("{0}: Projectile reference is not set!", transform.name); }
 
@@ -46,7 +46,7 @@ public class Tower : MonoBehaviour
         Pizza = GameObject.FindGameObjectWithTag("Pizza");
         if (Pizza == null) { Debug.LogErrorFormat("{0}: GameObject with tag 'Pizza' couldn't be found in the scene!", transform.name); }
 
-        InvokeRepeating("TowerTick", 0.0f, AttackTime);
+        InvokeRepeating(nameof(TowerTick), 0.0f, AttackTime);
 
     }
 
@@ -58,7 +58,7 @@ public class Tower : MonoBehaviour
             Vector3 pizzaDir = Pizza.transform.position - ProjectileHolder.transform.position;
             pizzaDir.y += 0.5f;
             RaycastHit hit;
-            if (Physics.Raycast(ProjectileHolder.transform.position, pizzaDir, out hit, Range, layerTower))
+            if (Physics.Raycast(ProjectileHolder.transform.position, pizzaDir, out hit, Range, layersToIgnore))
             {
                 //Debug.DrawRay(ProjectileHolder.transform.position, pizzaDir, Color.green, 0.1f);
                 losToPizza = hit.transform.gameObject.layer == layerPizza;
