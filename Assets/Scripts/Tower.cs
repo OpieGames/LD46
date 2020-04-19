@@ -96,7 +96,6 @@ public class Tower : MonoBehaviour
                         projGO.GetComponent<Rigidbody>().AddForce(projGO.transform.forward * ProjectileSpeed * 90);
                         projGO.GetComponentInChildren<MeshRenderer>().material.color = Color.red;
                         shotCount = 0;
-                        projGO.GetComponentInChildren<MeshRenderer>().sharedMaterial.SetColor("albedo_", new Color(0.8679245f, 0.05322179f, 0.4156687f, 1.0f));
                     }
                     else
                     {
