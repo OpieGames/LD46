@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PathFollower : MonoBehaviour
 {
@@ -76,6 +77,7 @@ public class PathFollower : MonoBehaviour
     private void CompletedPath()
     {
         Debug.Log("Path Completed");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     private void OnDrawGizmos()
