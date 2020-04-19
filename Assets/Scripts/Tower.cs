@@ -77,7 +77,6 @@ public class Tower : MonoBehaviour
             case TowerType.Shield:
             case TowerType.Sniper:
             default:
-                Debug.Log(losToPizza);
                 if (distToPizza <= Range && losToPizza)
                 {
                     //Debug.LogFormat("{0} is in range of pizza! ({1})", transform.name, distToPizza);
