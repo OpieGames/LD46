@@ -65,6 +65,8 @@ public class CPMMovement : MonoBehaviour
 
     public float maxTopSpeed = 15.0f;
 
+    public AudioClip JumpSound;
+
     public bool jumpedThisFrame = false;
     public bool landedThisFrame = false;
     public float minimumAirTimeForLanding = 0.5f;
@@ -359,6 +361,8 @@ public class CPMMovement : MonoBehaviour
             playerVelocity.y = jumpSpeed;
             wishJump = false;
             jumpedThisFrame = true;
+            GetComponent<AudioSource>().clip = JumpSound;
+            GetComponent<AudioSource>().Play();
         }
     }
 

@@ -34,6 +34,7 @@ public class Tower : MonoBehaviour
     private int layerPizza;
     public LayerMask layersToIgnore;
     private bool losToPizza = false;
+    private AudioSource sound;
 
     void Start()
     {
@@ -46,7 +47,6 @@ public class Tower : MonoBehaviour
         if (Player == null) { Debug.LogErrorFormat("{0}: GameObject with tag 'Player' couldn't be found in the scene!", transform.name); }
         Pizza = GameObject.FindGameObjectWithTag("Pizza");
         if (Pizza == null) { Debug.LogErrorFormat("{0}: GameObject with tag 'Pizza' couldn't be found in the scene!", transform.name); }
-
         
         if (Type == TowerType.Sniper)
         {
@@ -56,6 +56,8 @@ public class Tower : MonoBehaviour
         {
             InvokeRepeating(nameof(TowerTick), 0.0f, AttackTime);
         }
+
+        sound = gameObject.GetComponent<AudioSource>();
     }
 
     void Update()
@@ -83,6 +85,7 @@ public class Tower : MonoBehaviour
             {
                 case TowerType.Basic:
                     BasicTower();
+                    sound.Play();
                     break;
                 case TowerType.LaserWall:
                     break;
@@ -90,9 +93,11 @@ public class Tower : MonoBehaviour
                     break;
                 case TowerType.Sniper:
                     SniperTower();
+                    sound.Play();
                     break;
                 default:
                     BasicTower();
+                    sound.Play();
                     break;
             }
         }

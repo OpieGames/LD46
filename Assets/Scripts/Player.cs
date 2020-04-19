@@ -9,6 +9,9 @@ public class Player : MonoBehaviour
     public float ParryHoldTime = 0.3f;
     public float ParryRefillRatio = 0.5f;
 
+    public AudioClip ShieldBlockSound;
+    public AudioClip ShieldParrySound;
+
     private PlayerShield playerShield;
     private CPMMovement playerMovement;
     private float curParryingHoldTime = 0.0f;
