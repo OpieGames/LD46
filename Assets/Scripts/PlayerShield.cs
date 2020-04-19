@@ -20,14 +20,16 @@ public class PlayerShield : MonoBehaviour
                 go.GetComponent<Rigidbody>().velocity = Vector3.zero;
                 go.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
 
+
                 Vector3 lookTarget = proj.TowerFiredFrom.transform.position;
-                lookTarget.y += 1.25f;
+                lookTarget.y += 1.15f; // reflect back, but just a bit lower (hopefully avoid some collisions (this is dumb))
                 Vector3 relativePos = lookTarget - transform.position;
                 Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.up);
                 go.transform.rotation = rotation;
+                proj.HasBeenParried = true;
 
                 //go.transform.LookAt(proj.TowerFiredFrom.transform);
-                go.GetComponent<Rigidbody>().AddForce(go.transform.forward * t.ProjectileSpeed * 100.0f);
+                go.GetComponent<Rigidbody>().AddForce(go.transform.forward * t.ProjectileSpeed * 110.0f);
                 Destroy(go, 5.0f);
             }
             else

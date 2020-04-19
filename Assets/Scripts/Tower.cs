@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public enum TowerType
 {
@@ -64,14 +66,14 @@ public class Tower : MonoBehaviour
                     if (shotCount >= 2)
                     {
                         proj.Parryable = true;
-                        projGO.GetComponent<Rigidbody>().AddForce(projGO.transform.forward * ProjectileSpeed * 100);
+                        projGO.GetComponent<Rigidbody>().AddForce(projGO.transform.forward * ProjectileSpeed * 75);
                         projGO.GetComponentInChildren<MeshRenderer>().material.color = Color.red;
                         shotCount = 0;
                     }
                     else
                     {
                         proj.Parryable = false;
-                        projGO.GetComponent<Rigidbody>().AddForce(projGO.transform.forward * ProjectileSpeed * 100);
+                        projGO.GetComponent<Rigidbody>().AddForce(projGO.transform.forward * ProjectileSpeed * 75);
                         shotCount++;
                     }
 
@@ -79,7 +81,19 @@ public class Tower : MonoBehaviour
                 }
                 break;
         }
+    }
 
+    private void OnCollisionEnter(Collision other)
+    {
+        BaseProjectile proj = other.gameObject.GetComponent<BaseProjectile>();
+        Debug.LogFormat("on collision enter (on: {0} | from: {1})", this.name, other.gameObject.name);
+        Debug.LogFormat("proj: {0} | parryable? {1} | hasbeenparried? {2}", proj, proj.Parryable, proj.HasBeenParried);
+        if (proj && proj.Parryable && proj.HasBeenParried)
+        {
+            Debug.LogFormat("{0} hit by parried projectile!", this.name);
+            Destroy(this.gameObject);
+            Destroy(proj.gameObject);
+        }
     }
 
     private void OnDrawGizmosSelected()

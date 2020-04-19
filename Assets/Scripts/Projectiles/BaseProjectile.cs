@@ -6,5 +6,6 @@ public class BaseProjectile : MonoBehaviour
 {
     public GameObject TowerFiredFrom;
     public bool Parryable = false;
+    public bool HasBeenParried = false;
 
 }

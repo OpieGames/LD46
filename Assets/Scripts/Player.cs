@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButton("Fire2"))
+        if (Input.GetButton("Block"))
         {
             Shield.SetActive(true);
         }

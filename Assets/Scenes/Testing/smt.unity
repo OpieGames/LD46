@@ -1008,6 +1008,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 213214503752110113, guid: 49e9c2049d1150d41b12c2d7353dbbfd,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 213214504189698921, guid: 49e9c2049d1150d41b12c2d7353dbbfd,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1088,16 +1093,15 @@ PrefabInstance:
       propertyPath: ProjectileInaccuracy
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 213214504189698934, guid: 49e9c2049d1150d41b12c2d7353dbbfd,
-        type: 3}
-      propertyPath: Projectile
-      value: 
-      objectReference: {fileID: 6258366091169480822, guid: c6fdc82286cebbc4293fd0fe5478dec3,
-        type: 3}
     - target: {fileID: 213214504189698935, guid: 49e9c2049d1150d41b12c2d7353dbbfd,
         type: 3}
       propertyPath: m_Name
       value: Tower
+      objectReference: {fileID: 0}
+    - target: {fileID: 8555991076842603272, guid: 49e9c2049d1150d41b12c2d7353dbbfd,
+        type: 3}
+      propertyPath: m_CollisionDetection
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49e9c2049d1150d41b12c2d7353dbbfd, type: 3}
