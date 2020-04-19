@@ -80,6 +80,7 @@ public class PathFollower : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
+    #if UNITY_EDITOR
     private void OnDrawGizmos()
     {
         if (Application.isEditor && PathHolder)
@@ -114,5 +115,6 @@ public class PathFollower : MonoBehaviour
             }
         }
     }
+    #endif
 
 }
