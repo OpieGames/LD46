@@ -29,8 +29,15 @@ public class Tower : MonoBehaviour
     
 
     private int shotCount = 0;
+    private int layerPizza;
+    private int layerTower;
+    private bool losToPizza = false;
+
     void Start()
     {
+        layerPizza = LayerMask.NameToLayer("Pizza");
+        layerTower = ~LayerMask.NameToLayer("Tower");
+        
         if (Projectile == null) { Debug.LogErrorFormat("{0}: Projectile reference is not set!", transform.name); }
 
         Player = GameObject.FindGameObjectWithTag("Player");
@@ -44,12 +51,24 @@ public class Tower : MonoBehaviour
 
     void Update()
     {
-
+        float distToPizza = Vector3.Distance(transform.position, Pizza.transform.position);
+        if (distToPizza <= Range)
+        {
+            Vector3 pizzaDir = Pizza.transform.position - ProjectileHolder.transform.position;
+            pizzaDir.y += 0.5f;
+            RaycastHit hit;
+            if (Physics.Raycast(ProjectileHolder.transform.position, pizzaDir, out hit, Range, layerTower))
+            {
+                //Debug.DrawRay(ProjectileHolder.transform.position, pizzaDir, Color.green, 0.1f);
+                losToPizza = hit.transform.gameObject.layer == layerPizza;
+            }
+        }
     }
 
     void TowerTick()
     {
         float distToPizza = Vector3.Distance(transform.position, Pizza.transform.position);
+
         switch (Type)
         {
             case TowerType.Basic:
@@ -57,7 +76,8 @@ public class Tower : MonoBehaviour
             case TowerType.Shield:
             case TowerType.Sniper:
             default:
-                if (distToPizza <= Range)
+                Debug.Log(losToPizza);
+                if (distToPizza <= Range && losToPizza)
                 {
                     //Debug.LogFormat("{0} is in range of pizza! ({1})", transform.name, distToPizza);
                     GameObject projGO = Instantiate(Projectile, ProjectileHolder.transform.position, Quaternion.identity);
@@ -118,10 +138,13 @@ public class Tower : MonoBehaviour
 
     private Vector3 PredictedPizzaTarget()
     {
-        float distance = (transform.position - Pizza.transform.position).magnitude;
+        Vector3 pizzaPos = Pizza.transform.position;
+        pizzaPos.y += 0.5f;
+        
+        float distance = (transform.position - pizzaPos).magnitude;
         float flightTime = distance / ProjectileSpeed;
         flightTime += Random.Range(-ProjectileInaccuracy, ProjectileInaccuracy);
 
-        return Pizza.transform.position + ((Pizza.transform.forward * Pizza.GetComponent<PathFollower>().CurrentSpeed) * flightTime);
+        return pizzaPos + ((Pizza.transform.forward * Pizza.GetComponent<PathFollower>().CurrentSpeed) * flightTime);
     }
 }

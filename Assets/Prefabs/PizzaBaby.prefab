@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1409788939840496584}
   - component: {fileID: 4179984136126367883}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -103,7 +103,7 @@ GameObject:
   - component: {fileID: 4178136564224895283}
   - component: {fileID: 5452805621018042267}
   - component: {fileID: 3627970775845974272}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -183,7 +183,7 @@ GameObject:
   - component: {fileID: 6788417448711849149}
   - component: {fileID: 6219762207107724301}
   - component: {fileID: 252680894141946408}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Slice
   m_TagString: Untagged
   m_Icon: {fileID: 0}
