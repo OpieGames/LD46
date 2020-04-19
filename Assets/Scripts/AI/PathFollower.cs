@@ -78,6 +78,7 @@ public class PathFollower : MonoBehaviour
         Debug.Log("Path Completed");
     }
 
+    #if UNITY_EDITOR
     private void OnDrawGizmos()
     {
         if (Application.isEditor && PathHolder)
@@ -112,5 +113,6 @@ public class PathFollower : MonoBehaviour
             }
         }
     }
+    #endif
 
 }
