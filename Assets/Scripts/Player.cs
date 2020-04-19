@@ -73,6 +73,23 @@ public class Player : MonoBehaviour
         {
             parryButtonReset = true;
         }
+
+        if (Input.GetButtonDown("Use") || Input.GetButtonDown("Parry"))
+        {
+            // Debug.Log("PRESSED USE");
+            RaycastHit hit;
+            if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 2.0f))
+            {
+                // Debug.Log("Got a Hit!");
+                TowerButton but;
+                but = hit.transform.gameObject.GetComponent<TowerButton>();
+                if (but)
+                {
+                    // Debug.Log("Got a button!");
+                    but.Activate();
+                }
+            }
+        }
     }
     
     public float CurrentParryStamina()
