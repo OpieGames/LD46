@@ -111,8 +111,8 @@ public class Tower : MonoBehaviour
     private void OnCollisionEnter(Collision other)
     {
         BaseProjectile proj = other.gameObject.GetComponent<BaseProjectile>();
-        Debug.LogFormat("on collision enter (on: {0} | from: {1})", this.name, other.gameObject.name);
-        Debug.LogFormat("proj: {0} | parryable? {1} | hasbeenparried? {2}", proj, proj.Parryable, proj.HasBeenParried);
+        // Debug.LogFormat("on collision enter (on: {0} | from: {1})", this.name, other.gameObject.name);
+        // Debug.LogFormat("proj: {0} | parryable? {1} | hasbeenparried? {2}", proj, proj.Parryable, proj.HasBeenParried);
         if (proj && proj.Parryable && proj.HasBeenParried)
         {
             Debug.LogFormat("{0} hit by parried projectile!", this.name);
