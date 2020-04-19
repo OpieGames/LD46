@@ -4,5 +4,7 @@ using UnityEngine;
 
 public class BaseProjectile : MonoBehaviour
 {
+    public GameObject TowerFiredFrom;
+    public bool Parryable = false;
 
 }

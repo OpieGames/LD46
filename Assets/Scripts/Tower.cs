@@ -22,6 +22,8 @@ public class Tower : MonoBehaviour
     public float AttackTime = 3.0f;
     [Range(0.0f, 40.0f)] public float ProjectileSpeed = 15.0f;
     [Range(0.0f, 0.1f)] public float ProjectileInaccuracy = 0.0f;
+
+    private int shotCount = 0;
     void Start()
     {
         if (Projectile == null) { Debug.LogErrorFormat("{0}: Projectile reference is not set!", transform.name); }
@@ -52,14 +54,28 @@ public class Tower : MonoBehaviour
                 if (distToPizza <= Range)
                 {
                     //Debug.LogFormat("{0} is in range of pizza! ({1})", transform.name, distToPizza);
-                    GameObject proj = Instantiate(Projectile, ProjectileHolder.transform.position, Quaternion.identity);
+                    GameObject projGO = Instantiate(Projectile, ProjectileHolder.transform.position, Quaternion.identity);
+                    BaseProjectile proj = projGO.GetComponent<BaseProjectile>();
+                    proj.TowerFiredFrom = this.gameObject;
 
                     Vector3 targetLoc = PredictedPizzaTarget();
+                    projGO.transform.LookAt(targetLoc);
 
-                    proj.transform.LookAt(targetLoc);
-                    proj.GetComponent<Rigidbody>().AddForce(proj.transform.forward * ProjectileSpeed * 100);
+                    if (shotCount >= 2)
+                    {
+                        proj.Parryable = true;
+                        projGO.GetComponent<Rigidbody>().AddForce(projGO.transform.forward * ProjectileSpeed * 100);
+                        projGO.GetComponentInChildren<MeshRenderer>().material.color = Color.red;
+                        shotCount = 0;
+                    }
+                    else
+                    {
+                        proj.Parryable = false;
+                        projGO.GetComponent<Rigidbody>().AddForce(projGO.transform.forward * ProjectileSpeed * 100);
+                        shotCount++;
+                    }
 
-                    Destroy(proj, 5.0f);
+                    Destroy(projGO, 4.0f); //TODO: add better cleanup
                 }
                 break;
         }

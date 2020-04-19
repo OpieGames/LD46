@@ -4786,6 +4786,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86cc6de459289f347bc25df00ef8b2fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TowerFiredFrom: {fileID: 0}
+  Parryable: 0
 --- !u!135 &2583881733299622013
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -4857,7 +4859,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 3f5f8abc704a86448b6679070b3c8eb0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

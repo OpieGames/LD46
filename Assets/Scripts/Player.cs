@@ -6,13 +6,11 @@ public class Player : MonoBehaviour
 {
     public int[] inventory = new int[(int)Pickup.Kind.NumKinds];
     public GameObject Shield;
-    // Start is called before the first frame update
     void Start()
     {
         Shield.SetActive(false);
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetButton("Fire2"))
