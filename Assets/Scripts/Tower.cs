@@ -93,9 +93,8 @@ public class Tower : MonoBehaviour
                     // Debug.DrawRay(ProjectileHolder.transform.position, pizzaDir, Color.yellow, 0.1f);
                 }
             }
-                // Debug.DrawRay(ProjectileHolder.transform.position, pizzaDir, Color.green, 0.1f);
+            // Debug.DrawRay(ProjectileHolder.transform.position, pizzaDir, Color.green, 0.1f);
         }
-        
         return false;
     }
 
