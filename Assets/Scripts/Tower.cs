@@ -17,11 +17,14 @@ public class Tower : MonoBehaviour
     public GameObject Pizza;
     public GameObject Projectile;
     public GameObject ProjectileHolder;
+
     [Header("Stats")]
     [Range(0.0f, 40.0f)] public float Range = 10.0f;
     public float AttackTime = 3.0f;
     [Range(0.0f, 40.0f)] public float ProjectileSpeed = 15.0f;
     [Range(0.0f, 0.1f)] public float ProjectileInaccuracy = 0.0f;
+
+    
 
     private int shotCount = 0;
     void Start()
@@ -34,6 +37,7 @@ public class Tower : MonoBehaviour
         if (Pizza == null) { Debug.LogErrorFormat("{0}: GameObject with tag 'Pizza' couldn't be found in the scene!", transform.name); }
 
         InvokeRepeating("TowerTick", 0.0f, AttackTime);
+
     }
 
     void Update()
@@ -67,6 +71,7 @@ public class Tower : MonoBehaviour
                         projGO.GetComponent<Rigidbody>().AddForce(projGO.transform.forward * ProjectileSpeed * 100);
                         projGO.GetComponentInChildren<MeshRenderer>().material.color = Color.red;
                         shotCount = 0;
+                        projGO.GetComponentInChildren<MeshRenderer>().sharedMaterial.SetColor("albedo_", new Color(0.8679245f, 0.05322179f, 0.4156687f, 1.0f));
                     }
                     else
                     {
