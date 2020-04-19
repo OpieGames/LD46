@@ -48,14 +48,7 @@ public class Tower : MonoBehaviour
         Pizza = GameObject.FindGameObjectWithTag("Pizza");
         if (Pizza == null) { Debug.LogErrorFormat("{0}: GameObject with tag 'Pizza' couldn't be found in the scene!", transform.name); }
         
-        if (Type == TowerType.Sniper)
-        {
-            InvokeRepeating(nameof(TowerTick), 0.0f, AttackTime * 2.0f);
-        }
-        else
-        {
-            InvokeRepeating(nameof(TowerTick), 0.0f, AttackTime);
-        }
+        InvokeTowerTick();
 
         sound = gameObject.GetComponent<AudioSource>();
     }
@@ -76,6 +69,18 @@ public class Tower : MonoBehaviour
         }
     }
 
+    private void InvokeTowerTick()
+    {
+        if (Type == TowerType.Sniper)
+        {
+            InvokeRepeating(nameof(TowerTick), 0.0f, AttackTime * 2.0f);
+        }
+        else
+        {
+            InvokeRepeating(nameof(TowerTick), 0.0f, AttackTime);
+        }
+    }
+    
     void TowerTick()
     {
         float distToPizza = Vector3.Distance(transform.position, Pizza.transform.position);

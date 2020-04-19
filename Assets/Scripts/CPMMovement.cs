@@ -42,7 +42,7 @@ struct Cmd
 public class CPMMovement : MonoBehaviour
 {
     public Transform playerView;     // Camera
-    public float playerViewYOffset = 0.6f; // The height at which the camera is bound to
+    public float playerViewYOffset = 0.7f; // The height at which the camera is bound to
     public float xMouseSensitivity = 30.0f;
     public float yMouseSensitivity = 30.0f;
     //
@@ -134,14 +134,14 @@ public class CPMMovement : MonoBehaviour
         landedThisFrame = false;
 
         // Do FPS calculation
-        frameCount++;
-        dt += Time.deltaTime;
-        if (dt > 1.0 / fpsDisplayRate)
-        {
-            fps = Mathf.Round(frameCount / dt);
-            frameCount = 0;
-            dt -= 1.0f / fpsDisplayRate;
-        }
+        // frameCount++;
+        // dt += Time.deltaTime;
+        // if (dt > 1.0 / fpsDisplayRate)
+        // {
+        //     fps = Mathf.Round(frameCount / dt);
+        //     frameCount = 0;
+        //     dt -= 1.0f / fpsDisplayRate;
+        // }
         /* Ensure that the cursor is locked into the screen */
         if (Cursor.lockState != CursorLockMode.Locked)
         {
