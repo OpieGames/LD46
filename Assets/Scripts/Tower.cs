@@ -28,8 +28,7 @@ public class Tower : MonoBehaviour
     [Range(0.0f, 0.1f)] public float ProjectileInaccuracy = 0.0f;
     [Range(0.0f, 2.0f)] public float ShotPredictionFudgeFactor = 0.6f;
 
-    
-
+    private float timeSinceAttack = float.MaxValue;
     private int shotCount = 0;
     private int layerPizza;
     public LayerMask layersToIgnore;
@@ -48,7 +47,10 @@ public class Tower : MonoBehaviour
         Pizza = GameObject.FindGameObjectWithTag("Pizza");
         if (Pizza == null) { Debug.LogErrorFormat("{0}: GameObject with tag 'Pizza' couldn't be found in the scene!", transform.name); }
         
-        InvokeTowerTick();
+        if (Type == TowerType.Sniper)
+        {
+            AttackTime *= 2.0f;
+        }
 
         sound = gameObject.GetComponent<AudioSource>();
     }
@@ -63,9 +65,22 @@ public class Tower : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(ProjectileHolder.transform.position, pizzaDir, out hit, Range, layersToIgnore))
             {
-                //Debug.DrawRay(ProjectileHolder.transform.position, pizzaDir, Color.green, 0.1f);
+                Debug.DrawRay(ProjectileHolder.transform.position, pizzaDir, Color.green, 0.1f);
                 losToPizza = hit.transform.gameObject.layer == layerPizza;
             }
+        }
+        
+        if (timeSinceAttack >= AttackTime)
+        {
+            bool fired = TowerTick();
+            if (fired)
+            {
+                timeSinceAttack = 0.0f;
+            }
+        }
+        else
+        {
+            timeSinceAttack += 1.0f * Time.deltaTime;
         }
     }
 
@@ -81,7 +96,7 @@ public class Tower : MonoBehaviour
         }
     }
     
-    void TowerTick()
+    bool TowerTick()
     {
         float distToPizza = Vector3.Distance(transform.position, Pizza.transform.position);
         if (distToPizza <= Range && losToPizza)
@@ -105,7 +120,9 @@ public class Tower : MonoBehaviour
                     sound.Play();
                     break;
             }
+            return true;
         }
+        return false;
     }
 
     private void OnCollisionEnter(Collision other)
