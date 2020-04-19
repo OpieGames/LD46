@@ -19,6 +19,7 @@ public class Tower : MonoBehaviour
     public GameObject Pizza;
     public GameObject Projectile;
     public GameObject ProjectileHolder;
+    public GameObject ExplosionParticle;
 
     [Header("Stats")]
     [Range(0.0f, 40.0f)] public float Range = 10.0f;
@@ -116,8 +117,11 @@ public class Tower : MonoBehaviour
         if (proj && proj.Parryable && proj.HasBeenParried)
         {
             Debug.LogFormat("{0} hit by parried projectile!", this.name);
-            Destroy(this.gameObject);
+            Instantiate(ExplosionParticle, transform.position, new Quaternion());
             Destroy(proj.gameObject);
+            Destroy(this.gameObject);
+            
+            
         }
     }
 

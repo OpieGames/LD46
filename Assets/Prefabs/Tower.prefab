@@ -53,8 +53,10 @@ MonoBehaviour:
   Projectile: {fileID: 6258366091169480822, guid: c6fdc82286cebbc4293fd0fe5478dec3,
     type: 3}
   ProjectileHolder: {fileID: 4923776078367191203}
-  Range: 14
-  AttackTime: 3
+  ExplosionParticle: {fileID: 5896198741970858781, guid: fc8a742d922c444498dead3b8fea4131,
+    type: 3}
+  Range: 12
+  AttackTime: 4
   ProjectileSpeed: 5
   ProjectileInaccuracy: 0
 --- !u!54 &8555991076842603272
