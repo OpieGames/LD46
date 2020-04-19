@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Rigidbody))]
 public class Pizza : MonoBehaviour
@@ -10,12 +11,17 @@ public class Pizza : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        Debug.Log("pizza hit by: " + other.gameObject.name);
         BaseProjectile proj = other.gameObject.GetComponent<BaseProjectile>();
         if (proj)
         {
-            //TODO: pizza gets hit logic
+            Debug.Log("pizza hit by projectile!");
+            CurrentHealth--;
             Destroy(other.gameObject);
+
+            if (CurrentHealth <= 0)
+            {
+                SceneManager.LoadScene("Scenes/Lose");
+            }
         }
     }
 
