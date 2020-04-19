@@ -81,7 +81,7 @@ public class PathFollower : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        if (Application.isEditor)
+        if (Application.isEditor && PathHolder)
         {
             if (Camera.current == SceneView.lastActiveSceneView.camera || Camera.current == Camera.main)
             {
