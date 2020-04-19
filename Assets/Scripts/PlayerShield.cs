@@ -31,6 +31,10 @@ public class PlayerShield : MonoBehaviour
                     {
                         Parrying(proj, other);
                     }
+                    else
+                    {
+                        Blocking(proj, other);
+                    }
                     break;
             }
         }
