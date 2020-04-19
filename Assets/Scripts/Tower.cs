@@ -58,15 +58,34 @@ public class Tower : MonoBehaviour
         float distToPizza = Vector3.Distance(transform.position, Pizza.transform.position);
         if (distToPizza <= Range)
         {
-            Vector3 pizzaDir = Pizza.transform.position - ProjectileHolder.transform.position;
-            pizzaDir.y += 0.5f;
-            RaycastHit hit;
-            if (Physics.Raycast(ProjectileHolder.transform.position, pizzaDir, out hit, Range, layersToIgnore))
-            {
-                //Debug.DrawRay(ProjectileHolder.transform.position, pizzaDir, Color.green, 0.1f);
-                losToPizza = hit.transform.gameObject.layer == layerPizza;
-            }
+            losToPizza = CanLOS();
         }
+    }
+
+    private bool CanLOS()
+    {
+        Vector3 pizzaDir = Pizza.transform.position - ProjectileHolder.transform.position;
+        pizzaDir.y += 0.5f;
+        RaycastHit hit;
+        if (Physics.Raycast(ProjectileHolder.transform.position, pizzaDir, out hit, Range, layersToIgnore))
+        {
+            if (hit.transform.gameObject.layer == layerPizza)
+            {
+                pizzaDir = PredictedPizzaTarget() - ProjectileHolder.transform.position;
+                if (Physics.Raycast(ProjectileHolder.transform.position, pizzaDir, out hit, Range, layersToIgnore))
+                {
+                    if (hit.transform.gameObject.layer == layerPizza)
+                    {
+                        return true;
+                    }
+
+                    // Debug.DrawRay(ProjectileHolder.transform.position, pizzaDir, Color.yellow, 0.1f);
+                }
+            }
+                // Debug.DrawRay(ProjectileHolder.transform.position, pizzaDir, Color.green, 0.1f);
+        }
+        
+        return false;
     }
 
     private void InvokeTowerTick()
