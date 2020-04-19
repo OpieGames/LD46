@@ -13,6 +13,8 @@ public enum ShieldState
 public class PlayerShield : MonoBehaviour
 {
     public ShieldState CurrentState = ShieldState.Inactive;
+    public Player HoldingPlayer;
+
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("shield collided with " + other.transform.name);
@@ -44,6 +46,7 @@ public class PlayerShield : MonoBehaviour
     {
         Debug.Log("Projectile destroyed!");
         Destroy(other.gameObject);
+        HoldingPlayer.SuccessfulBlock();
     }
 
     private void Parrying(BaseProjectile proj, Collider other)
@@ -66,5 +69,6 @@ public class PlayerShield : MonoBehaviour
         //go.transform.LookAt(proj.TowerFiredFrom.transform);
         go.GetComponent<Rigidbody>().AddForce(go.transform.forward * t.ProjectileSpeed * 110.0f);
         Destroy(go, 5.0f);
+        HoldingPlayer.SuccessfulParry();
     }
 }

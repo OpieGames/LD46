@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     public AudioClip ShieldBlockSound;
     public AudioClip ShieldParrySound;
 
+    private AudioSource audioSource;
     private PlayerShield playerShield;
     private CPMMovement playerMovement;
     private float curParryingHoldTime = 0.0f;
@@ -22,8 +23,11 @@ public class Player : MonoBehaviour
         Shield.SetActive(false);
         curParryingHoldTime = 0.0f;
 
+        audioSource = GetComponent<AudioSource>();
         playerShield = Shield.GetComponent<PlayerShield>();
         playerMovement = gameObject.GetComponent<CPMMovement>();
+
+        playerShield.HoldingPlayer = this;
     }
 
     void Update()
@@ -70,10 +74,22 @@ public class Player : MonoBehaviour
             parryButtonReset = true;
         }
     }
-
+    
     public float CurrentParryStamina()
     {
         return curParryingHoldTime;
+    }
+
+    public void SuccessfulParry()
+    {
+        audioSource.clip = ShieldParrySound;
+        audioSource.Play();
+    }
+
+    public void SuccessfulBlock()
+    {
+        audioSource.clip = ShieldBlockSound;
+        audioSource.Play();
     }
 
     private void ShieldInactive()
