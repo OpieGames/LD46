@@ -87,8 +87,8 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 0
     - alpha_: 0.25
-    - scale_: 10
-    - speed_: 7.5
+    - scale_: 4
+    - speed_: 1
     m_Colors:
     - _BaseColor: {r: 0.20283017, g: 0.6687486, b: 1, a: 0.30588236}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
