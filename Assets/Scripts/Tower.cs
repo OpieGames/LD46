@@ -26,6 +26,7 @@ public class Tower : MonoBehaviour
     public float AttackTime = 3.0f;
     [Range(0.0f, 40.0f)] public float ProjectileSpeed = 15.0f;
     [Range(0.0f, 0.1f)] public float ProjectileInaccuracy = 0.0f;
+    [Range(0.0f, 2.0f)] public float ShotPredictionFudgeFactor = 0.6f;
 
     
 
@@ -46,8 +47,15 @@ public class Tower : MonoBehaviour
         Pizza = GameObject.FindGameObjectWithTag("Pizza");
         if (Pizza == null) { Debug.LogErrorFormat("{0}: GameObject with tag 'Pizza' couldn't be found in the scene!", transform.name); }
 
-        InvokeRepeating(nameof(TowerTick), 0.0f, AttackTime);
-
+        
+        if (Type == TowerType.Sniper)
+        {
+            InvokeRepeating(nameof(TowerTick), 0.0f, AttackTime * 2.0f);
+        }
+        else
+        {
+            InvokeRepeating(nameof(TowerTick), 0.0f, AttackTime);
+        }
     }
 
     void Update()
@@ -69,42 +77,24 @@ public class Tower : MonoBehaviour
     void TowerTick()
     {
         float distToPizza = Vector3.Distance(transform.position, Pizza.transform.position);
-
-        switch (Type)
+        if (distToPizza <= Range && losToPizza)
         {
-            case TowerType.Basic:
-            case TowerType.LaserWall:
-            case TowerType.Shield:
-            case TowerType.Sniper:
-            default:
-                if (distToPizza <= Range && losToPizza)
-                {
-                    //Debug.LogFormat("{0} is in range of pizza! ({1})", transform.name, distToPizza);
-                    GameObject projGO = Instantiate(Projectile, ProjectileHolder.transform.position, Quaternion.identity);
-                    BaseProjectile proj = projGO.GetComponent<BaseProjectile>();
-                    proj.TowerFiredFrom = this.gameObject;
-
-                    Vector3 targetLoc = PredictedPizzaTarget();
-                    projGO.transform.LookAt(targetLoc);
-
-                    if (shotCount >= 2)
-                    {
-                        proj.Parryable = true;
-                        projGO.GetComponent<Rigidbody>().AddForce(projGO.transform.forward * ProjectileSpeed * 90);
-                        projGO.GetComponentInChildren<MeshRenderer>().material.color = Color.red;
-                        shotCount = 0;
-                        projGO.GetComponentInChildren<MeshRenderer>().sharedMaterial.SetColor("albedo_", new Color(0.8679245f, 0.05322179f, 0.4156687f, 1.0f));
-                    }
-                    else
-                    {
-                        proj.Parryable = false;
-                        projGO.GetComponent<Rigidbody>().AddForce(projGO.transform.forward * ProjectileSpeed * 90);
-                        shotCount++;
-                    }
-
-                    Destroy(projGO, 4.0f); //TODO: add better cleanup
-                }
-                break;
+            switch (Type)
+            {
+                case TowerType.Basic:
+                    BasicTower();
+                    break;
+                case TowerType.LaserWall:
+                    break;
+                case TowerType.Shield:
+                    break;
+                case TowerType.Sniper:
+                    SniperTower();
+                    break;
+                default:
+                    BasicTower();
+                    break;
+            }
         }
     }
 
@@ -121,6 +111,15 @@ public class Tower : MonoBehaviour
             Destroy(this.gameObject);
             
             
+        }
+
+        if (Type == TowerType.Sniper)
+        {
+            if (shotCount > 3)
+            {
+                Instantiate(ExplosionParticle, transform.position, new Quaternion());
+                Destroy(this.gameObject);
+            }
         }
     }
 
@@ -148,6 +147,51 @@ public class Tower : MonoBehaviour
         float flightTime = distance / ProjectileSpeed;
         flightTime += Random.Range(-ProjectileInaccuracy, ProjectileInaccuracy);
 
-        return pizzaPos + ((Pizza.transform.forward * (Pizza.GetComponent<PathFollower>().CurrentSpeed * 0.6f)) * flightTime);
+        return pizzaPos + ((Pizza.transform.forward * (Pizza.GetComponent<PathFollower>().CurrentSpeed * ShotPredictionFudgeFactor)) * flightTime);
+    }
+
+    private void BasicTower()
+    {
+        //Debug.LogFormat("{0} is in range of pizza! ({1})", transform.name, distToPizza);
+        GameObject projGO = Instantiate(Projectile, ProjectileHolder.transform.position, Quaternion.identity);
+        BaseProjectile proj = projGO.GetComponent<BaseProjectile>();
+        proj.TowerFiredFrom = this.gameObject;
+
+        Vector3 targetLoc = PredictedPizzaTarget();
+        projGO.transform.LookAt(targetLoc);
+
+        if (shotCount >= 2)
+        {
+            proj.Parryable = true;
+            projGO.GetComponent<Rigidbody>().AddForce(projGO.transform.forward * ProjectileSpeed * 90);
+            projGO.GetComponentInChildren<MeshRenderer>().material.color = Color.red;
+            shotCount = 0;
+            projGO.GetComponentInChildren<MeshRenderer>().sharedMaterial.SetColor("albedo_", new Color(0.8679245f, 0.05322179f, 0.4156687f, 1.0f));
+        }
+        else
+        {
+            proj.Parryable = false;
+            projGO.GetComponent<Rigidbody>().AddForce(projGO.transform.forward * ProjectileSpeed * 90);
+            shotCount++;
+        }
+
+        Destroy(projGO, 4.0f); //TODO: add better cleanup
+    }
+    
+    private void SniperTower()
+    {
+        //Debug.LogFormat("{0} is in range of pizza! ({1})", transform.name, distToPizza);
+        GameObject projGO = Instantiate(Projectile, ProjectileHolder.transform.position, Quaternion.identity);
+        BaseProjectile proj = projGO.GetComponent<BaseProjectile>();
+        proj.TowerFiredFrom = this.gameObject;
+
+        Vector3 targetLoc = PredictedPizzaTarget();
+        projGO.transform.LookAt(targetLoc);
+
+        proj.Parryable = false;
+        projGO.GetComponent<Rigidbody>().AddForce(projGO.transform.forward * ProjectileSpeed * 200);
+        shotCount++;
+
+        Destroy(projGO, 4.0f); //TODO: add better cleanup
     }
 }
