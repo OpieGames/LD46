@@ -145,10 +145,9 @@ MonoBehaviour:
   Projectile: {fileID: 6258366091169480822, guid: c6fdc82286cebbc4293fd0fe5478dec3,
     type: 3}
   ProjectileHolder: {fileID: 4923776078367191203}
-  parryableMaterial: {fileID: 2100000, guid: 272858a16bb95b2499535224a2753274, type: 2}
-  Range: 10
+  Range: 14
   AttackTime: 3
-  ProjectileSpeed: 15
+  ProjectileSpeed: 5
   ProjectileInaccuracy: 0
 --- !u!1 &4923776078367191203
 GameObject:
