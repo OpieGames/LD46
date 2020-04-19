@@ -65,7 +65,6 @@ public class PathFollower : MonoBehaviour
                 else
                 {
                     targetWaypoint = waypoints[targetWaypointIndex];
-                    Debug.Log("targetWaypoint: " + targetWaypoint);
                     yield return new WaitForSeconds(WaitAtPointTime);
                     yield return StartCoroutine(TurnToFace(targetWaypoint));
                 }
@@ -81,7 +80,7 @@ public class PathFollower : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        if (Application.isEditor)
+        if (Application.isEditor && PathHolder)
         {
             if (Camera.current == SceneView.lastActiveSceneView.camera || Camera.current == Camera.main)
             {
