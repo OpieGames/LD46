@@ -63,7 +63,7 @@ MonoBehaviour:
   ShotPredictionFudgeFactor: 0.6
   layersToIgnore:
     serializedVersion: 2
-    m_Bits: 19456
+    m_Bits: 23552
 --- !u!54 &8555991076842603272
 Rigidbody:
   m_ObjectHideFlags: 0
