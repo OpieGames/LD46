@@ -316,7 +316,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -429,8 +429,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventory: 00000000
   Shield: {fileID: 4933442701197892371}
-  ParryHoldTime: 0.3
-  ParryRefillRatio: 0.3
+  ParryHoldTime: 0.15
+  ParryRefillRatio: 0.1
   ShieldBlockSound: {fileID: 8300000, guid: d432c03b5eb6af94e8edfc22c9e4865f, type: 3}
   ShieldParrySound: {fileID: 8300000, guid: f1080978ea032ba40bd3a3e433a3a55a, type: 3}
 --- !u!136 &5393508524609271499

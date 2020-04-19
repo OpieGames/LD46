@@ -361,8 +361,7 @@ public class CPMMovement : MonoBehaviour
             playerVelocity.y = jumpSpeed;
             wishJump = false;
             jumpedThisFrame = true;
-            GetComponent<AudioSource>().clip = JumpSound;
-            GetComponent<AudioSource>().Play();
+            GetComponent<AudioSource>().PlayOneShot(JumpSound);
         }
     }
 
