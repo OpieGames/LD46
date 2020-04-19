@@ -406,6 +406,7 @@ MonoBehaviour:
   sideStrafeSpeed: 1
   jumpSpeed: 8
   holdJumpToBhop: 0
+  maxTopSpeed: 14
   jumpedThisFrame: 0
   landedThisFrame: 0
   minimumAirTimeForLanding: 0.5

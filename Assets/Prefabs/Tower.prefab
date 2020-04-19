@@ -53,9 +53,9 @@ MonoBehaviour:
   Projectile: {fileID: 6258366091169480822, guid: c6fdc82286cebbc4293fd0fe5478dec3,
     type: 3}
   ProjectileHolder: {fileID: 4923776078367191203}
-  Range: 10
+  Range: 14
   AttackTime: 3
-  ProjectileSpeed: 15
+  ProjectileSpeed: 5
   ProjectileInaccuracy: 0
 --- !u!54 &8555991076842603272
 Rigidbody:
@@ -183,6 +183,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Turret_Cannon
       objectReference: {fileID: 0}
+    - target: {fileID: 2754872102952980834, guid: 32235ff5167a6b0499150441299a6078,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 49f3bbf47a5435447b7da1b59f05db85, type: 2}
+    - target: {fileID: 5535837819037073330, guid: 32235ff5167a6b0499150441299a6078,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 793986ea87a6bba45a5a0a0b3410387b, type: 2}
+    - target: {fileID: 5986319534514223483, guid: 32235ff5167a6b0499150441299a6078,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 49f3bbf47a5435447b7da1b59f05db85, type: 2}
+    - target: {fileID: 7004242520284830324, guid: 32235ff5167a6b0499150441299a6078,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 49f3bbf47a5435447b7da1b59f05db85, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 32235ff5167a6b0499150441299a6078, type: 3}
 --- !u!4 &7733243348178105373 stripped

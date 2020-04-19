@@ -63,6 +63,8 @@ public class CPMMovement : MonoBehaviour
     public float jumpSpeed = 8.0f;                // The speed at which the character's up axis gains when hitting jump
     public bool holdJumpToBhop = false;           // When enabled allows player to just hold jump button to keep on bhopping perfectly. Beware: smells like casual.
 
+    public float maxTopSpeed = 15.0f;
+
     public bool jumpedThisFrame = false;
     public bool landedThisFrame = false;
     public float minimumAirTimeForLanding = 0.5f;
@@ -98,6 +100,8 @@ public class CPMMovement : MonoBehaviour
     // Player commands, stores wish commands that the player asks for (Forward, back, jump, etc)
     private Cmd _cmd;
 
+    private float defaultMaxTopSpeed;
+
     private void Start()
     {
         // Hide the cursor
@@ -118,6 +122,8 @@ public class CPMMovement : MonoBehaviour
             transform.position.z);
 
         _controller = GetComponent<CharacterController>();
+
+        defaultMaxTopSpeed = maxTopSpeed;
     }
 
     private void Update()
@@ -197,6 +203,11 @@ public class CPMMovement : MonoBehaviour
             transform.position.x,
             transform.position.y + playerViewYOffset,
             transform.position.z);
+
+        if (playerVelocity.magnitude > maxTopSpeed)
+        {
+            playerVelocity = playerVelocity.normalized*maxTopSpeed;
+        }
     }
 
     /*******************************************************************************************************\
@@ -418,5 +429,10 @@ public class CPMMovement : MonoBehaviour
     public bool IsGrounded()
     {
         return _controller.isGrounded;
+    }
+
+    public void ResetMaxTopSpeed()
+    {
+        maxTopSpeed = defaultMaxTopSpeed;
     }
 }
