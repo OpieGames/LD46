@@ -101,11 +101,11 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 0
   quality:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0
   intensity:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: 0.373
     min: 0
     max: 1
   clamp:
@@ -131,6 +131,7 @@ MonoBehaviour:
   - {fileID: -4460428244555416166}
   - {fileID: 7797128933838513699}
   - {fileID: 6592968096518963898}
+  - {fileID: -2512174013739578919}
 --- !u!114 &3755539331864845221
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -164,7 +165,7 @@ MonoBehaviour:
   m_AdvancedMode: 0
   intensity:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0.29
     min: -1
     max: 1
   xMultiplier:
@@ -182,7 +183,7 @@ MonoBehaviour:
     m_Value: {x: 0.5, y: 0.5}
   scale:
     m_OverrideState: 1
-    m_Value: 2.65
+    m_Value: 1
     min: 0.01
     max: 5
 --- !u!114 &7797128933838513699
