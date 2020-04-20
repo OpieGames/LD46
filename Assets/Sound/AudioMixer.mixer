@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!244 &-9075485156168557864
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 32722107ea9ff504eb1f2542e432e017
+  m_EffectName: Lowpass Simple
+  m_MixLevel: f71443d18eb9d6f4a8efd13ccd1f7a67
+  m_Parameters:
+  - m_ParameterName: Cutoff freq
+    m_GUID: 104036ebe3b6928468fa8b578d0d8a16
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
+--- !u!244 &-8164920741937195557
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 76c2a1663e755ab42b84d61fc307c4c1
+  m_EffectName: Attenuation
+  m_MixLevel: 317ae20909ad1ef4fb2cafd94f968482
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
 --- !u!243 &-6291070573827837971
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
@@ -9,7 +39,8 @@ AudioMixerGroupController:
   m_Name: Pizza
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: f964cc098012d274bba3d4d486447757
-  m_Children: []
+  m_Children:
+  - {fileID: 7099245169990283096}
   m_Volume: f17fe02aa79d7ce40bdc2f506a700c40
   m_Pitch: 72d28574c1807504fad99c7f19ab07ba
   m_Send: 00000000000000000000000000000000
@@ -127,6 +158,7 @@ AudioMixerController:
     - a89e75ebcb0b5844f881b8d492f1869d
     - d686855d479fc7644987ee7fdf52d2cb
     - f964cc098012d274bba3d4d486447757
+    - a5f646f65e0f48542b191bf288054eb6
     name: View
   m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 24500006}
@@ -177,13 +209,24 @@ AudioMixerSnapshotController:
   m_SnapshotID: 83bcd7830496eea4992b07eb5b0c753f
   m_FloatValues:
     7afc6911f1ef74d4b84c158f8f19f462: -9657
+    9eeea79243292094eb46927d7dd1b8da: 1786
     922afcc25f8830946b57c6f34fd58df1: -0.3378893
     32af2bf3d2062f44face20eb8321aa4f: -893
+    6532bda4893d2994cbce7eada3def171: 0.5
+    229f95b4f032fec4f8df3b7af0c7306a: 512
+    9ccb9eb4534ed8e43b153baff6d9954f: 0.753
+    30cc84a6e7f623b469f6e5deaa491696: 0.205
     e3c944876c723ee41bbb90c134126559: 0.286
+    60e5f8e7053e7b3479392e3ba4910e7e: 4
+    1264ad797a041984480116f2f24812a5: 0.755
     f17fe02aa79d7ce40bdc2f506a700c40: -0.16685224
+    b05a9f2a40673e64582bd2c397204ebd: 0.48
+    c31e789aaac47994c9a73b95296fbd57: 0.8
     301147baafb37aa4081c5d2e9571eeb9: 0.254
     fd56fadafd629a44b89eb7b8d971c166: -0.27209902
+    104036ebe3b6928468fa8b578d0d8a16: 2100
     8ae6461c9b67f7545bdc9664e24d88f4: 26
+    a783277c0cafe434ebde334ea738c1eb: 4
     7a66552feb129384eac6e848169b1873: -7.8940816
   m_TransitionOverrides: {}
 --- !u!244 &3091993532714257080
@@ -214,6 +257,49 @@ AudioMixerEffectController:
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
   m_Bypass: 0
+--- !u!244 &4893289709490673466
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 0e83b68bd6112cc4281291b781ccad4e
+  m_EffectName: Flange
+  m_MixLevel: 650d24cdf89917a4eaf214cec340b169
+  m_Parameters:
+  - m_ParameterName: Drymix
+    m_GUID: b05a9f2a40673e64582bd2c397204ebd
+  - m_ParameterName: Wetmix
+    m_GUID: 9ccb9eb4534ed8e43b153baff6d9954f
+  - m_ParameterName: Depth
+    m_GUID: 1264ad797a041984480116f2f24812a5
+  - m_ParameterName: Rate
+    m_GUID: 6532bda4893d2994cbce7eada3def171
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
+--- !u!243 &7099245169990283096
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: PizzaHover
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: a5f646f65e0f48542b191bf288054eb6
+  m_Children: []
+  m_Volume: 60e5f8e7053e7b3479392e3ba4910e7e
+  m_Pitch: b4a8d68f1f345d84293f69d847e9ba43
+  m_Send: 00000000000000000000000000000000
+  m_Effects:
+  - {fileID: -8164920741937195557}
+  - {fileID: 4893289709490673466}
+  - {fileID: -9075485156168557864}
+  m_UserColorIndex: 3
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
 --- !u!243 &7177973272324083425
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
