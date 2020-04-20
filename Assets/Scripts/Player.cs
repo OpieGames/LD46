@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -28,9 +29,13 @@ public class Player : MonoBehaviour
     public AudioClip ShieldBlockSound;
     public AudioClip ShieldParrySound;
 
+    public GameObject PauseMenuRef;
+
     private AudioSource audioSource;
     private PlayerShield playerShield;
     private CPMMovement playerMovement;
+    private float defXSens;
+    private float defYSens;
     private Pizza pizza;
     private float curParryingHoldTime = 0.0f;
     private bool parryingActive = false;
@@ -50,67 +55,78 @@ public class Player : MonoBehaviour
 
         playerShield.HoldingPlayer = this;
         state = PlayerState.Playing;
+        
+        defXSens = playerMovement.xMouseSensitivity;
+        defYSens = playerMovement.yMouseSensitivity;
+        
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     void Update()
     {
         pollItemButtons();
 
-        if (Input.GetButton("Block"))
+        if (state == PlayerState.Playing)
         {
-            ShieldBlock();
-        }
-        else if (Input.GetButton("Parry") && parryButtonReset)
-        {
-            if (curParryingHoldTime <= 0.001f)
+            if (Input.GetButton("Block"))
             {
-                ShieldParry();
-                curParryingHoldTime += 1.0f * Time.deltaTime;
-                parryingActive = true;
+                ShieldBlock();
             }
-            else if (parryingActive)
+            else if (Input.GetButton("Parry") && parryButtonReset)
             {
-                ShieldParry();
-                curParryingHoldTime += 1.0f * Time.deltaTime;
-                if (curParryingHoldTime >= ParryHoldTime)
+                if (curParryingHoldTime <= 0.001f)
                 {
+                    ShieldParry();
+                    curParryingHoldTime += 1.0f * Time.deltaTime;
+                    parryingActive = true;
+                }
+                else if (parryingActive)
+                {
+                    ShieldParry();
+                    curParryingHoldTime += 1.0f * Time.deltaTime;
+                    if (curParryingHoldTime >= ParryHoldTime)
+                    {
+                        parryingActive = false;
+                        parryButtonReset = false;
+                    }
+                }
+                else
+                {
+                    Debug.Log("Player tried to parry but can't!");
+                    ShieldInactive();
                     parryingActive = false;
                     parryButtonReset = false;
+                    curParryingHoldTime = Mathf.Clamp(curParryingHoldTime - ParryRefillRatio * Time.deltaTime, 0.0f,
+                        ParryHoldTime);
                 }
             }
             else
             {
-                Debug.Log("Player tried to parry but can't!");
                 ShieldInactive();
-                parryingActive = false;
-                parryButtonReset = false;
-                curParryingHoldTime = Mathf.Clamp(curParryingHoldTime - ParryRefillRatio * Time.deltaTime, 0.0f, ParryHoldTime);
+                curParryingHoldTime = Mathf.Clamp(curParryingHoldTime - ParryRefillRatio * Time.deltaTime, 0.0f,
+                    ParryHoldTime);
             }
-        }
-        else
-        {
-            ShieldInactive();
-            curParryingHoldTime = Mathf.Clamp(curParryingHoldTime - ParryRefillRatio * Time.deltaTime, 0.0f, ParryHoldTime);
-        }
 
-        if (Input.GetButtonUp("Parry"))
-        {
-            parryButtonReset = true;
-        }
-
-        if (Input.GetButtonDown("Use") || Input.GetButtonDown("Parry"))
-        {
-            // Debug.Log("PRESSED USE");
-            RaycastHit hit;
-            if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 2.0f))
+            if (Input.GetButtonUp("Parry"))
             {
-                // Debug.Log("Got a Hit!");
-                TowerButton but;
-                but = hit.transform.gameObject.GetComponent<TowerButton>();
-                if (but)
+                parryButtonReset = true;
+            }
+
+            if (Input.GetButtonDown("Use") || Input.GetButtonDown("Parry"))
+            {
+                // Debug.Log("PRESSED USE");
+                RaycastHit hit;
+                if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 2.0f))
                 {
-                    // Debug.Log("Got a button!");
-                    but.Activate();
+                    // Debug.Log("Got a Hit!");
+                    TowerButton but;
+                    but = hit.transform.gameObject.GetComponent<TowerButton>();
+                    if (but)
+                    {
+                        // Debug.Log("Got a button!");
+                        but.Activate();
+                    }
                 }
             }
         }
@@ -121,13 +137,31 @@ public class Player : MonoBehaviour
             {
                 case PlayerState.Playing:
                     Debug.Log("menus!");
-                    //state = PlayerState.Menus;
+                    state = PlayerState.Menus;
+                    CursorMenuMode();
+                    PauseMenu();
                     break;
                 case PlayerState.Menus:
-                    Debug.Log("Back!");
+                    resume();
                     break;
             }
         }
+    }
+
+    private void CursorMenuMode()
+    {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+        playerMovement.xMouseSensitivity = 0.0f;
+        playerMovement.yMouseSensitivity = 0.0f;
+    }
+    
+    private void CursorPlayMode()
+    {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        playerMovement.xMouseSensitivity = defXSens;
+        playerMovement.yMouseSensitivity = defYSens;
     }
 
     void pollItemButtons()
@@ -234,4 +268,26 @@ public class Player : MonoBehaviour
         playerShield.CurrentState = ShieldState.Parrying;
         playerMovement.maxTopSpeed = 3.0f;
     }
+    
+    #region UI
+
+    public void PauseMenu()
+    {
+        PauseMenuRef.SetActive(true);
+        Time.timeScale = 0.0f;
+    }
+
+    public void ResumeClicked()
+    {
+        resume();
+    }
+
+    private void resume()
+    {
+        state = PlayerState.Playing;
+        CursorPlayMode();
+        PauseMenuRef.SetActive(false);
+        Time.timeScale = 1.0f;
+    }
+    #endregion
 }
