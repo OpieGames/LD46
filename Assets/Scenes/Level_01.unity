@@ -841,7 +841,7 @@ PrefabInstance:
     - target: {fileID: 213214504189698921, guid: ceb838fcc0748664aa9cd1354f5dce91,
         type: 3}
       propertyPath: m_RootOrder
-      value: 17
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 213214504189698921, guid: ceb838fcc0748664aa9cd1354f5dce91,
         type: 3}
@@ -1444,7 +1444,7 @@ MonoBehaviour:
     meshQuery:
       layers: 16777223
       maskAndChannels: 234881031
-    surfaceParameter: 17044
+    surfaceParameter: 18380
     meshQueryIndex: 6
     subMeshQueryIndex: 0
     geometryHashValue: 8566950302385506678
@@ -6083,7 +6083,7 @@ PrefabInstance:
     - target: {fileID: 7063604672227941406, guid: 0c47461e4c0a7db45bef525cdcf85900,
         type: 3}
       propertyPath: m_RootOrder
-      value: 16
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 7063604672227941406, guid: 0c47461e4c0a7db45bef525cdcf85900,
         type: 3}
@@ -17844,6 +17844,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1080255546662118871, guid: 80ebb6ac7aef57543b76d6777564c2c5,
+        type: 3}
+      propertyPath: PauseMenuRef
+      value: 
+      objectReference: {fileID: 989192523}
     - target: {fileID: 8929099141729651112, guid: 80ebb6ac7aef57543b76d6777564c2c5,
         type: 3}
       propertyPath: m_Name
@@ -17906,6 +17911,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80ebb6ac7aef57543b76d6777564c2c5, type: 3}
+--- !u!114 &855497593 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1080255546662118871, guid: 80ebb6ac7aef57543b76d6777564c2c5,
+    type: 3}
+  m_PrefabInstance: {fileID: 855497592}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8371876b3b9f5141989fbc6dd3b506a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &856360931
 GameObject:
   m_ObjectHideFlags: 0
@@ -20953,6 +20970,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1605588204, guid: 0ab6380bd4a04c74aaf2024814d6cb41, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 855497593}
+    - target: {fileID: 1605588204, guid: 0ab6380bd4a04c74aaf2024814d6cb41, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ResumeClicked
+      objectReference: {fileID: 0}
     - target: {fileID: 1812641554410682250, guid: 0ab6380bd4a04c74aaf2024814d6cb41,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -21075,6 +21100,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ab6380bd4a04c74aaf2024814d6cb41, type: 3}
+--- !u!1 &989192523 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1295199675, guid: 0ab6380bd4a04c74aaf2024814d6cb41,
+    type: 3}
+  m_PrefabInstance: {fileID: 989192522}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &989340684
 GameObject:
   m_ObjectHideFlags: 0
@@ -29743,6 +29774,72 @@ MonoBehaviour:
     - EdgeIndices: 07000000060000000500000004000000
       TexGenIndex: 5
     Generation: 101
+--- !u!1 &1415217456
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1415217459}
+  - component: {fileID: 1415217458}
+  - component: {fileID: 1415217457}
+  m_Layer: 0
+  m_Name: EventSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1415217457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1415217456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalAxis: Horizontal
+  m_VerticalAxis: Vertical
+  m_SubmitButton: Submit
+  m_CancelButton: Cancel
+  m_InputActionsPerSecond: 10
+  m_RepeatDelay: 0.5
+  m_ForceModuleActive: 0
+--- !u!114 &1415217458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1415217456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_FirstSelected: {fileID: 0}
+  m_sendNavigationEvents: 1
+  m_DragThreshold: 10
+--- !u!4 &1415217459
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1415217456}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 20
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1419248860
 GameObject:
   m_ObjectHideFlags: 0
@@ -32674,7 +32771,7 @@ Transform:
   m_Children:
   - {fileID: 1535168133}
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1499858570
 GameObject:
@@ -34373,7 +34470,7 @@ MonoBehaviour:
     meshQuery:
       layers: 16777223
       maskAndChannels: 234881031
-    surfaceParameter: 17046
+    surfaceParameter: 18386
     meshQueryIndex: 0
     subMeshQueryIndex: 0
     geometryHashValue: 3189324717383240118
@@ -35252,7 +35349,7 @@ MonoBehaviour:
     meshQuery:
       layers: 16777223
       maskAndChannels: 234881031
-    surfaceParameter: 15990
+    surfaceParameter: 16392
     meshQueryIndex: 7
     subMeshQueryIndex: 0
     geometryHashValue: -1542090454489259387
@@ -38486,7 +38583,7 @@ MonoBehaviour:
     meshQuery:
       layers: 16777223
       maskAndChannels: 234881031
-    surfaceParameter: 17040
+    surfaceParameter: 18384
     meshQueryIndex: 5
     subMeshQueryIndex: 0
     geometryHashValue: 7604255799813486099
@@ -42500,7 +42597,7 @@ MonoBehaviour:
     meshQuery:
       layers: 33554440
       maskAndChannels: 8
-    surfaceParameter: 17042
+    surfaceParameter: 18504
     meshQueryIndex: 1
     subMeshQueryIndex: 0
     geometryHashValue: 2176672733479703936

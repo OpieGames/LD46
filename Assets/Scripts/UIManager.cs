@@ -16,7 +16,6 @@ public class UIManager : MonoBehaviour
         if (!SettingsMenu)
             SettingsMenu = GameObject.FindWithTag("OptionsMenu");
         SettingsMenu.GetComponent<OptionsMenu>().LoadSettings();
-        
     }
 
 
