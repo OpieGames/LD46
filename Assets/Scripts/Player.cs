@@ -31,6 +31,7 @@ public class Player : MonoBehaviour
     private AudioSource audioSource;
     private PlayerShield playerShield;
     private CPMMovement playerMovement;
+    private Pizza pizza;
     private float curParryingHoldTime = 0.0f;
     private bool parryingActive = false;
     private bool parryButtonReset = true;
@@ -45,6 +46,7 @@ public class Player : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         playerShield = Shield.GetComponent<PlayerShield>();
         playerMovement = gameObject.GetComponent<CPMMovement>();
+        pizza = GameObject.FindGameObjectWithTag("Pizza").GetComponent<Pizza>();
 
         playerShield.HoldingPlayer = this;
         state = PlayerState.Playing;
@@ -130,43 +132,67 @@ public class Player : MonoBehaviour
 
     void pollItemButtons()
     {
-        /*
         if (Input.GetButtonDown("ItemSlot1"))
         {
-            activateItem(Pickup.Kind.PizzaHeal);
+            activateItem(pickupInfos[(int)PickupInfo.Kind.PizzaHeal]);
         }
         else if (Input.GetButtonDown("ItemSlot2"))
         {
-            activateItem(Pickup.Kind.PizzaHeal);
+            activateItem(pickupInfos[(int)PickupInfo.Kind.PizzaShield]);
         }
         else if (Input.GetButtonDown("ItemSlot3"))
         {
-            activateItem(Pickup.Kind.PizzaHeal);
+            activateItem(pickupInfos[(int)PickupInfo.Kind.PizzaBoost]);
         }
         else if (Input.GetButtonDown("ItemSlot4"))
         {
-            activateItem(Pickup.Kind.PizzaHeal);
+            activateItem(pickupInfos[(int)PickupInfo.Kind.PizzaSlow]);
         }
         else if (Input.GetButtonDown("ItemSlot5"))
         {
-            activateItem(Pickup.Kind.PizzaHeal);
+            activateItem(pickupInfos[(int)PickupInfo.Kind.PlayerBoost]);
         }
-        */
     }
 
-    void activateItem(PickupInfo.Kind kind)
+    void activateItem(PickupInfo info)
     {
-        switch (kind)
+        Debug.Log("Attempted to activate " + info.kind.ToString());
+        switch (info.kind)
         {
             case PickupInfo.Kind.PizzaHeal:
+                if (inventory.pizzaHeals > 0)
+                {
+                    inventory.pizzaHeals--;
+                    pizza.Heal();
+                }
                 break;
             case PickupInfo.Kind.PizzaShield:
+                if (inventory.pizzaShields > 0)
+                {
+                    inventory.pizzaShields--;
+                    pizza.Shield(info.effectDuration);
+                }
                 break;
             case PickupInfo.Kind.PizzaBoost:
+                if (inventory.pizzaBoosts > 0)
+                {
+                    inventory.pizzaBoosts--;
+                    pizza.GetComponent<PathFollower>().ApplyBoost(info.effectDuration, info.effectStrength);
+                }
                 break;
             case PickupInfo.Kind.PizzaSlow:
+                if (inventory.pizzaSlows > 0)
+                {
+                    inventory.pizzaSlows--;
+                    pizza.GetComponent<PathFollower>().ApplyBoost(info.effectDuration, info.effectStrength);
+                }
                 break;
             case PickupInfo.Kind.PlayerBoost:
+                if (inventory.playerBoosts > 0)
+                {
+                    inventory.playerBoosts--;
+                    // TODO: Apply player boost
+                }
                 break;
             default:
                 break;
