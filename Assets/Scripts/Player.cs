@@ -61,6 +61,8 @@ public class Player : MonoBehaviour
         
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+
+        RefreshSettings();
     }
 
     void Update()
@@ -162,6 +164,13 @@ public class Player : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         playerMovement.xMouseSensitivity = defXSens;
         playerMovement.yMouseSensitivity = defYSens;
+    }
+
+    public void RefreshSettings()
+    {
+        //any player specific settings here
+        
+        playerMovement.RefreshSettings();
     }
 
     void pollItemButtons()
@@ -279,6 +288,7 @@ public class Player : MonoBehaviour
 
     public void ResumeClicked()
     {
+        FindObjectOfType<UIManager>().DestroySettingsMenu();
         resume();
     }
 
@@ -286,8 +296,19 @@ public class Player : MonoBehaviour
     {
         state = PlayerState.Playing;
         CursorPlayMode();
+        RefreshSettings();
         PauseMenuRef.SetActive(false);
         Time.timeScale = 1.0f;
+    }
+
+    public void SettingsClicked()
+    {
+        FindObjectOfType<UIManager>().CreateSettingsMenu();
+    }
+
+    public void QuitClicked()
+    {
+        Application.Quit();
     }
     #endregion
 }

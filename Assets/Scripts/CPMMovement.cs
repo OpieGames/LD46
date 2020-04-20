@@ -127,7 +127,6 @@ public class CPMMovement : MonoBehaviour
         _controller = GetComponent<CharacterController>();
 
         defaultMaxTopSpeed = maxTopSpeed;
-        playerSensitivity = PlayerPrefs.GetFloat("Sensitivity", 1.0f);
     }
 
     private void Update()
@@ -214,6 +213,11 @@ public class CPMMovement : MonoBehaviour
             HoriVel = HoriVel.normalized*maxTopSpeed;
             playerVelocity = new Vector3(HoriVel.x, playerVelocity.y, HoriVel.y);
         }
+    }
+
+    public void RefreshSettings()
+    {
+        playerSensitivity = PlayerPrefs.GetFloat("Sensitivity", 1.0f);
     }
 
     /*******************************************************************************************************\

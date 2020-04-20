@@ -17,7 +17,9 @@ public class OptionsMenu : MonoBehaviour
     public AudioMixer Mixer;
     
     private float playerSensitivity;
+    private float futurePlayerSensitivity;
     private float playerMasterVolume;
+    private float futurePlayerMasterVolume;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,8 +34,8 @@ public class OptionsMenu : MonoBehaviour
 
     public void ApplyPlayerPrefs()
     {
-        PlayerPrefs.SetFloat("Sensitivity", playerSensitivity);
-        PlayerPrefs.SetFloat("MasterVolume", playerMasterVolume);
+        PlayerPrefs.SetFloat("Sensitivity", futurePlayerSensitivity);
+        PlayerPrefs.SetFloat("MasterVolume", futurePlayerMasterVolume);
 
         PlayerPrefs.Save();
     }
@@ -41,31 +43,34 @@ public class OptionsMenu : MonoBehaviour
     public void UpdatedSensSlider(float value)
     {
         SensTextInput.text = $"{value:F2}";
-        playerSensitivity = value;
+        futurePlayerSensitivity = value;
     }
     
     public void UpdatedSensInput(string value)
     {
         float fvalue = float.Parse(value);
         SensSlider.value = fvalue;
-        playerSensitivity = fvalue;
+        futurePlayerSensitivity = fvalue;
     }
     
     public void UpdatedMainVolumeSlider(float value)
     {
         MasterVolumeLabel.text = $"Volume: {value:F2}";
-        playerMasterVolume = value;
+        futurePlayerMasterVolume = value;
     }
 
     public void CancelSettings()
     {
+        SensSlider.value = playerSensitivity;
+        MasterVolumeLabel.text = $"Volume: {playerMasterVolume:F2}";
+        MasterVolumeSlider.value = playerMasterVolume;
+        
         gameObject.SetActive(false);
     }
 
     public void AcceptSettings()
     {
         ApplyPlayerPrefs();
-
         LoadSettings();
 
         gameObject.SetActive(false);
