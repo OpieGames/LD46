@@ -9,11 +9,23 @@ public class Pickup : MonoBehaviour
     Collider col;
     public AudioClip pickupSound;
 
+    private float yPos;
+    float bounceHeight = 0.3f;
+    float bounceSpeed = 2.0f;
+    float rotSpeed = 40.0f;
+
     // Start is called before the first frame update
     void Start()
     {
         col = GetComponent<Collider>();
         col.isTrigger = true;
+        yPos = transform.position.y;
+    }
+
+    void Update()
+    {
+        transform.Rotate(new Vector3(0, Time.deltaTime*rotSpeed, 0), Space.World);
+        transform.position = new Vector3(transform.position.x, yPos + Mathf.Sin(Time.time*bounceSpeed)*bounceHeight, transform.position.z);
     }
 
     void PickedUp(Player player)
