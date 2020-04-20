@@ -7,6 +7,7 @@ public class Pickup : MonoBehaviour
 {
     public PickupInfo info;
     Collider col;
+    public AudioClip pickupSound;
 
     // Start is called before the first frame update
     void Start()
@@ -19,6 +20,7 @@ public class Pickup : MonoBehaviour
     {
         if (player)
         {
+            player.GetComponent<AudioSource>().PlayOneShot(pickupSound);
             switch (info.kind)
             {
                 case PickupInfo.Kind.PizzaHeal:
