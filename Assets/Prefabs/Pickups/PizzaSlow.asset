@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: PizzaSlow
   m_EditorClassIdentifier: 
   kind: 3
-  effectStrength: 0.5
+  effectStrength: 50
   effectDuration: 5
