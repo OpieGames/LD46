@@ -16,8 +16,9 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         if (!SettingsMenu)
-            SettingsMenu = GameObject.FindWithTag("OptionsMenu");
-        SettingsMenu.GetComponent<OptionsMenu>().LoadSettings();
+            SettingsMenu = GameObject.FindGameObjectWithTag("OptionsMenu");
+        if (SettingsMenu)
+            SettingsMenu.GetComponent<OptionsMenu>().LoadSettings();
         if (player)
             player.RefreshSettings();
     }

@@ -1164,7 +1164,7 @@ MonoBehaviour:
     meshQuery:
       layers: 33554440
       maskAndChannels: 8
-    surfaceParameter: 18504
+    surfaceParameter: 19452
     meshQueryIndex: 1
     subMeshQueryIndex: 0
     geometryHashValue: 2043657324822489773
@@ -9572,7 +9572,7 @@ MonoBehaviour:
     meshQuery:
       layers: 16777223
       maskAndChannels: 234881031
-    surfaceParameter: 18384
+    surfaceParameter: 19450
     meshQueryIndex: 0
     subMeshQueryIndex: 0
     geometryHashValue: -6182915991589515974
@@ -9713,7 +9713,7 @@ MonoBehaviour:
     meshQuery:
       layers: 16777223
       maskAndChannels: 234881031
-    surfaceParameter: 18386
+    surfaceParameter: 19456
     meshQueryIndex: 5
     subMeshQueryIndex: 0
     geometryHashValue: -1388613802022527489
@@ -10860,7 +10860,7 @@ MonoBehaviour:
     meshQuery:
       layers: 33554440
       maskAndChannels: 8
-    surfaceParameter: 18504
+    surfaceParameter: 19452
     meshQueryIndex: 1
     subMeshQueryIndex: 0
     geometryHashValue: 2043657324822489773
@@ -15121,41 +15121,9 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 611020896, guid: 0ab6380bd4a04c74aaf2024814d6cb41, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 611020896, guid: 0ab6380bd4a04c74aaf2024814d6cb41, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 611020896, guid: 0ab6380bd4a04c74aaf2024814d6cb41, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 611020896, guid: 0ab6380bd4a04c74aaf2024814d6cb41, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1558367084}
-    - target: {fileID: 611020896, guid: 0ab6380bd4a04c74aaf2024814d6cb41, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: QuitClicked
-      objectReference: {fileID: 0}
-    - target: {fileID: 611020896, guid: 0ab6380bd4a04c74aaf2024814d6cb41, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 1121243203, guid: 0ab6380bd4a04c74aaf2024814d6cb41, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1121243203, guid: 0ab6380bd4a04c74aaf2024814d6cb41, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1121243203, guid: 0ab6380bd4a04c74aaf2024814d6cb41, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1121243203, guid: 0ab6380bd4a04c74aaf2024814d6cb41, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -15163,6 +15131,10 @@ PrefabInstance:
     - target: {fileID: 1121243203, guid: 0ab6380bd4a04c74aaf2024814d6cb41, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: SettingsClicked
+      objectReference: {fileID: 0}
+    - target: {fileID: 1121243203, guid: 0ab6380bd4a04c74aaf2024814d6cb41, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1121243203, guid: 0ab6380bd4a04c74aaf2024814d6cb41, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -15291,6 +15263,86 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UICanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 3491232745681780967, guid: 0ab6380bd4a04c74aaf2024814d6cb41,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3491232745681780967, guid: 0ab6380bd4a04c74aaf2024814d6cb41,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3491232745681780967, guid: 0ab6380bd4a04c74aaf2024814d6cb41,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3597366606321988029, guid: 0ab6380bd4a04c74aaf2024814d6cb41,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3597366606321988029, guid: 0ab6380bd4a04c74aaf2024814d6cb41,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3597366606321988029, guid: 0ab6380bd4a04c74aaf2024814d6cb41,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6068193339092477704, guid: 0ab6380bd4a04c74aaf2024814d6cb41,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6308986092477402391, guid: 0ab6380bd4a04c74aaf2024814d6cb41,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6308986092477402391, guid: 0ab6380bd4a04c74aaf2024814d6cb41,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6308986092477402391, guid: 0ab6380bd4a04c74aaf2024814d6cb41,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7201285675099363990, guid: 0ab6380bd4a04c74aaf2024814d6cb41,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7201285675099363990, guid: 0ab6380bd4a04c74aaf2024814d6cb41,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7201285675099363990, guid: 0ab6380bd4a04c74aaf2024814d6cb41,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7520488663512665441, guid: 0ab6380bd4a04c74aaf2024814d6cb41,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7520488663512665441, guid: 0ab6380bd4a04c74aaf2024814d6cb41,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7520488663512665441, guid: 0ab6380bd4a04c74aaf2024814d6cb41,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ab6380bd4a04c74aaf2024814d6cb41, type: 3}
@@ -18071,7 +18123,7 @@ MonoBehaviour:
     meshQuery:
       layers: 16777223
       maskAndChannels: 234881031
-    surfaceParameter: 18380
+    surfaceParameter: 19454
     meshQueryIndex: 6
     subMeshQueryIndex: 0
     geometryHashValue: -2565862808140612743
