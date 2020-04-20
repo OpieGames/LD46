@@ -28,12 +28,15 @@ public class Tower : MonoBehaviour
     [Range(0.0f, 0.1f)] public float ProjectileInaccuracy = 0.0f;
     [Range(0.0f, 2.0f)] public float ShotPredictionFudgeFactor = 0.6f;
 
-    private float timeSinceAttack = float.MaxValue;
+    private float timeSinceAttack;
     private int shotCount = 0;
     private int layerPizza;
     public LayerMask layersToIgnore;
     private bool losToPizza = false;
-    private AudioSource sound;
+    public AudioClip fireSound;
+    public AudioClip chargeSound;
+    private bool chargeSoundFired = false;
+    private AudioSource audioSource;
 
     void Start()
     {
@@ -50,9 +53,15 @@ public class Tower : MonoBehaviour
         if (Type == TowerType.Sniper)
         {
             AttackTime *= 2.0f;
+            timeSinceAttack = 0.0f;
+        }
+        else
+        {
+            timeSinceAttack = AttackTime;
         }
 
-        sound = gameObject.GetComponent<AudioSource>();
+
+        audioSource = gameObject.GetComponent<AudioSource>();
     }
 
     void Update()
@@ -62,13 +71,24 @@ public class Tower : MonoBehaviour
         {
             losToPizza = CanLOS();
         }
-        
+
+        if (Type == TowerType.Sniper && distToPizza <= Range && CanLOS())
+        {
+            if (!chargeSoundFired && timeSinceAttack >= AttackTime - 1.7f) // ignore the initial max time
+            {
+                audioSource.PlayOneShot(chargeSound);
+                chargeSoundFired = true;
+            }
+        }
+
         if (timeSinceAttack >= AttackTime)
         {
             bool fired = TowerTick();
             if (fired)
             {
                 timeSinceAttack = 0.0f;
+                if (Type == TowerType.Sniper)
+                    chargeSoundFired = false;
             }
         }
         else
@@ -119,7 +139,7 @@ public class Tower : MonoBehaviour
             {
                 case TowerType.Basic:
                     BasicTower();
-                    sound.Play();
+                    audioSource.PlayOneShot(fireSound);
                     break;
                 case TowerType.LaserWall:
                     break;
@@ -127,11 +147,11 @@ public class Tower : MonoBehaviour
                     break;
                 case TowerType.Sniper:
                     SniperTower();
-                    sound.Play();
+                    audioSource.PlayOneShot(fireSound);
                     break;
                 default:
                     BasicTower();
-                    sound.Play();
+                    audioSource.PlayOneShot(fireSound);
                     break;
             }
             return true;
@@ -142,8 +162,8 @@ public class Tower : MonoBehaviour
     private void OnCollisionEnter(Collision other)
     {
         BaseProjectile proj = other.gameObject.GetComponent<BaseProjectile>();
-        Debug.LogFormat("on collision enter (on: {0} | from: {1})", this.name, other.gameObject.name);
-        Debug.LogFormat("proj: {0} | parryable? {1} | hasbeenparried? {2}", proj, proj.Parryable, proj.HasBeenParried);
+        //Debug.LogFormat("on collision enter (on: {0} | from: {1})", this.name, other.gameObject.name);
+        //Debug.LogFormat("proj: {0} | parryable? {1} | hasbeenparried? {2}", proj, proj.Parryable, proj.HasBeenParried);
         if (proj && proj.Parryable && proj.HasBeenParried)
         {
             Debug.LogFormat("{0} hit by parried projectile!", this.name);
