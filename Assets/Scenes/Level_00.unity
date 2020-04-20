@@ -1164,7 +1164,7 @@ MonoBehaviour:
     meshQuery:
       layers: 33554440
       maskAndChannels: 8
-    surfaceParameter: 16446
+    surfaceParameter: 18504
     meshQueryIndex: 1
     subMeshQueryIndex: 0
     geometryHashValue: 2043657324822489773
@@ -9494,7 +9494,7 @@ MonoBehaviour:
     meshQuery:
       layers: 16777223
       maskAndChannels: 234881031
-    surfaceParameter: 16422
+    surfaceParameter: 18384
     meshQueryIndex: 0
     subMeshQueryIndex: 0
     geometryHashValue: -6182915991589515974
@@ -9635,7 +9635,7 @@ MonoBehaviour:
     meshQuery:
       layers: 16777223
       maskAndChannels: 234881031
-    surfaceParameter: 16444
+    surfaceParameter: 18386
     meshQueryIndex: 5
     subMeshQueryIndex: 0
     geometryHashValue: -1388613802022527489
@@ -10782,7 +10782,7 @@ MonoBehaviour:
     meshQuery:
       layers: 33554440
       maskAndChannels: 8
-    surfaceParameter: 16446
+    surfaceParameter: 18504
     meshQueryIndex: 1
     subMeshQueryIndex: 0
     geometryHashValue: 2043657324822489773
@@ -15013,31 +15013,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: UICanvas
       objectReference: {fileID: 0}
-    - target: {fileID: 4296306733240955930, guid: 0ab6380bd4a04c74aaf2024814d6cb41,
-        type: 3}
-      propertyPath: m_textInfo.characterCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4296306733240955930, guid: 0ab6380bd4a04c74aaf2024814d6cb41,
-        type: 3}
-      propertyPath: m_textInfo.spaceCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4296306733240955930, guid: 0ab6380bd4a04c74aaf2024814d6cb41,
-        type: 3}
-      propertyPath: m_textInfo.wordCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4296306733240955930, guid: 0ab6380bd4a04c74aaf2024814d6cb41,
-        type: 3}
-      propertyPath: m_textInfo.lineCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4296306733240955930, guid: 0ab6380bd4a04c74aaf2024814d6cb41,
-        type: 3}
-      propertyPath: m_textInfo.pageCount
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ab6380bd4a04c74aaf2024814d6cb41, type: 3}
 --- !u!1 &1729842275
@@ -17817,7 +17792,7 @@ MonoBehaviour:
     meshQuery:
       layers: 16777223
       maskAndChannels: 234881031
-    surfaceParameter: 33910
+    surfaceParameter: 18380
     meshQueryIndex: 6
     subMeshQueryIndex: 0
     geometryHashValue: -2565862808140612743

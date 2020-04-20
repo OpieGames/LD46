@@ -13,6 +13,12 @@ public class Player : MonoBehaviour
         public int playerBoosts;
     }
 
+    public enum PlayerState
+    {
+        Playing,
+        Menus,
+    }
+
     public Inventory inventory = new Inventory();
     public GameObject Shield;
     public PickupInfo[] pickupInfos = new PickupInfo[(int)PickupInfo.Kind.NumKinds];
@@ -29,6 +35,8 @@ public class Player : MonoBehaviour
     private bool parryingActive = false;
     private bool parryButtonReset = true;
 
+    private PlayerState state;
+
     void Start()
     {
         Shield.SetActive(false);
@@ -39,6 +47,7 @@ public class Player : MonoBehaviour
         playerMovement = gameObject.GetComponent<CPMMovement>();
 
         playerShield.HoldingPlayer = this;
+        state = PlayerState.Playing;
     }
 
     void Update()
@@ -101,6 +110,20 @@ public class Player : MonoBehaviour
                     // Debug.Log("Got a button!");
                     but.Activate();
                 }
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            switch (state)
+            {
+                case PlayerState.Playing:
+                    Debug.Log("menus!");
+                    //state = PlayerState.Menus;
+                    break;
+                case PlayerState.Menus:
+                    Debug.Log("Back!");
+                    break;
             }
         }
     }

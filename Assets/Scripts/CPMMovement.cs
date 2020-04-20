@@ -103,6 +103,7 @@ public class CPMMovement : MonoBehaviour
     private Cmd _cmd;
 
     private float defaultMaxTopSpeed;
+    private float playerSensitivity;
 
     private void Start()
     {
@@ -126,6 +127,7 @@ public class CPMMovement : MonoBehaviour
         _controller = GetComponent<CharacterController>();
 
         defaultMaxTopSpeed = maxTopSpeed;
+        playerSensitivity = PlayerPrefs.GetFloat("Sensitivity", 1.0f);
     }
 
     private void Update()
@@ -150,8 +152,8 @@ public class CPMMovement : MonoBehaviour
         }
 
         /* Camera rotation stuff, mouse controls this shit */
-        rotX -= Input.GetAxisRaw("Mouse Y") * xMouseSensitivity * 0.02f;
-        rotY += Input.GetAxisRaw("Mouse X") * yMouseSensitivity * 0.02f;
+        rotX -= Input.GetAxisRaw("Mouse Y") * xMouseSensitivity * 0.02f * playerSensitivity;
+        rotY += Input.GetAxisRaw("Mouse X") * yMouseSensitivity * 0.02f * playerSensitivity;
 
         // Clamp the X rotation
         if (rotX < -90)
