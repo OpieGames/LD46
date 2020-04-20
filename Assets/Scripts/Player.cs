@@ -55,10 +55,10 @@ public class Player : MonoBehaviour
 
         playerShield.HoldingPlayer = this;
         state = PlayerState.Playing;
-        
+
         defXSens = playerMovement.xMouseSensitivity;
         defYSens = playerMovement.yMouseSensitivity;
-        
+
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
 
@@ -157,7 +157,7 @@ public class Player : MonoBehaviour
         playerMovement.xMouseSensitivity = 0.0f;
         playerMovement.yMouseSensitivity = 0.0f;
     }
-    
+
     private void CursorPlayMode()
     {
         Cursor.visible = false;
@@ -227,7 +227,7 @@ public class Player : MonoBehaviour
                 if (inventory.pizzaSlows > 0)
                 {
                     inventory.pizzaSlows--;
-                    StartCoroutine(pizza.GetComponent<PathFollower>().ApplyBoost(info.effectDuration, info.effectStrength));
+                    StartCoroutine(pizza.GetComponent<PathFollower>().ApplySlow(info.effectDuration, info.effectStrength));
                 }
                 break;
             case PickupInfo.Kind.PlayerBoost:
@@ -277,7 +277,7 @@ public class Player : MonoBehaviour
         playerShield.CurrentState = ShieldState.Parrying;
         playerMovement.maxTopSpeed = 3.0f;
     }
-    
+
     #region UI
 
     public void PauseMenu()
