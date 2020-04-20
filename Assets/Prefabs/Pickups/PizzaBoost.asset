@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: PizzaBoost
   m_EditorClassIdentifier: 
   kind: 2
-  effectStrength: 50
+  effectStrength: 80
   effectDuration: 4
