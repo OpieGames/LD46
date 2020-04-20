@@ -96,23 +96,23 @@ public class Player : MonoBehaviour
 
     void pollItemButtons()
     {
-        if (Input.GetButtonDown("1"))
+        if (Input.GetButtonDown("ItemSlot1"))
         {
             activateItem(Pickup.Kind.PizzaHeal);
         }
-        else if (Input.GetButtonDown("2"))
+        else if (Input.GetButtonDown("ItemSlot2"))
         {
             activateItem(Pickup.Kind.PizzaHeal);
         }
-        else if (Input.GetButtonDown("3"))
+        else if (Input.GetButtonDown("ItemSlot3"))
         {
             activateItem(Pickup.Kind.PizzaHeal);
         }
-        else if (Input.GetButtonDown("4"))
+        else if (Input.GetButtonDown("ItemSlot4"))
         {
             activateItem(Pickup.Kind.PizzaHeal);
         }
-        else if (Input.GetButtonDown("5"))
+        else if (Input.GetButtonDown("ItemSlot5"))
         {
             activateItem(Pickup.Kind.PizzaHeal);
         }
