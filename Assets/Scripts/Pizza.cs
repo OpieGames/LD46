@@ -14,7 +14,7 @@ public class Pizza : MonoBehaviour
         BaseProjectile proj = other.gameObject.GetComponent<BaseProjectile>();
         if (proj)
         {
-            Debug.Log("pizza hit by projectile!");
+            //Debug.Log("pizza hit by projectile!");
             
             Destroy(other.gameObject);
             TakeDamage();

@@ -79,9 +79,9 @@ public class CPMMovement : MonoBehaviour
     /*FPS Stuff */
     public float fpsDisplayRate = 4.0f; // 4 updates per sec
 
-    private int frameCount = 0;
-    private float dt = 0.0f;
-    private float fps = 0.0f;
+    // private int frameCount = 0;
+    // private float dt = 0.0f;
+    // private float fps = 0.0f;
 
     private CharacterController _controller;
 
