@@ -9,6 +9,17 @@ public class Pizza : MonoBehaviour
     public int CurrentHealth = 6;
     public int MaxHealth = 6;
     public bool shielded = false;
+    public Transform shieldGraphic;
+
+    public void Update()
+    {
+        if (shielded)
+        {
+            shieldGraphic.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+        } else {
+            shieldGraphic.transform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
+        }
+    }
 
     private void OnCollisionEnter(Collision other)
     {
@@ -22,6 +33,7 @@ public class Pizza : MonoBehaviour
             if (!shielded) TakeDamage();
 
         }
+        
     }
 
     public void TakeDamage()
