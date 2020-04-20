@@ -60,7 +60,7 @@ MonoBehaviour:
   AttackTime: 4
   ProjectileSpeed: 5
   ProjectileInaccuracy: 0
-  ShotPredictionFudgeFactor: 0.6
+  ShotPredictionFudgeFactor: 0.7
   layersToIgnore:
     serializedVersion: 2
     m_Bits: 23552
