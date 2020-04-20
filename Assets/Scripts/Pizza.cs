@@ -9,15 +9,20 @@ public class Pizza : MonoBehaviour
     public int CurrentHealth = 6;
     public int MaxHealth = 6;
     public bool shielded = false;
-    public Transform shieldGraphic;
+    public MeshRenderer shieldGraphic;
+
+    public void Start()
+    {
+        shieldGraphic.enabled = shielded;
+    }
 
     public void Update()
     {
-        if (shielded)
+        if (shielded && !shieldGraphic.enabled)
         {
-            shieldGraphic.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
-        } else {
-            shieldGraphic.transform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
+            shieldGraphic.enabled = true;
+        } else if (!shielded && shieldGraphic.enabled) {
+            shieldGraphic.enabled = false;
         }
     }
 

@@ -799,7 +799,7 @@ MonoBehaviour:
   CurrentHealth: 6
   MaxHealth: 6
   shielded: 0
-  shieldGraphic: {fileID: 7677478284916256111}
+  shieldGraphic: {fileID: 5056012711124059002}
 --- !u!54 &4236235683866955924
 Rigidbody:
   m_ObjectHideFlags: 0
