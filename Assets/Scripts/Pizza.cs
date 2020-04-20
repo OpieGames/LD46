@@ -15,10 +15,10 @@ public class Pizza : MonoBehaviour
         if (proj)
         {
             //Debug.Log("pizza hit by projectile!");
-            
+
             Destroy(other.gameObject);
             TakeDamage();
-            
+
         }
     }
 
@@ -31,4 +31,13 @@ public class Pizza : MonoBehaviour
         }
     }
 
+    public void Heal()
+    {
+        CurrentHealth = Mathf.Min(CurrentHealth + 1, MaxHealth);
+    }
+
+    public void GainShield()
+    {
+
+    }
 }

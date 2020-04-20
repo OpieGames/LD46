@@ -427,8 +427,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8371876b3b9f5141989fbc6dd3b506a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventory: 00000000
   Shield: {fileID: 4933442701197892371}
+  pickupInfos:
+  - {fileID: 11400000, guid: 57c10d262dc3d19469b05123829e8340, type: 2}
+  - {fileID: 11400000, guid: df92ce5f67bc5444eb02d86c9337354a, type: 2}
+  - {fileID: 11400000, guid: e74b14d91308fbd4cae0d3ed4a7c9c57, type: 2}
+  - {fileID: 11400000, guid: 3644e53360c546a47a281098324728df, type: 2}
+  - {fileID: 11400000, guid: cefdae4b5c0672d4ea27a77b2c8adb03, type: 2}
   ParryHoldTime: 0.15
   ParryRefillRatio: 0.1
   ShieldBlockSound: {fileID: 8300000, guid: d432c03b5eb6af94e8edfc22c9e4865f, type: 3}

@@ -4,8 +4,18 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public int[] inventory = new int[(int)Pickup.Kind.NumKinds];
+    public struct Inventory
+    {
+        public int pizzaHeals;
+        public int pizzaShields;
+        public int pizzaBoosts;
+        public int pizzaSlows;
+        public int playerBoosts;
+    }
+
+    public Inventory inventory = new Inventory();
     public GameObject Shield;
+    public PickupInfo[] pickupInfos = new PickupInfo[(int)PickupInfo.Kind.NumKinds];
     public float ParryHoldTime = 0.3f;
     public float ParryRefillRatio = 0.5f;
 
@@ -18,6 +28,7 @@ public class Player : MonoBehaviour
     private float curParryingHoldTime = 0.0f;
     private bool parryingActive = false;
     private bool parryButtonReset = true;
+
     void Start()
     {
         Shield.SetActive(false);
@@ -96,6 +107,7 @@ public class Player : MonoBehaviour
 
     void pollItemButtons()
     {
+        /*
         if (Input.GetButtonDown("ItemSlot1"))
         {
             activateItem(Pickup.Kind.PizzaHeal);
@@ -116,29 +128,25 @@ public class Player : MonoBehaviour
         {
             activateItem(Pickup.Kind.PizzaHeal);
         }
+        */
     }
 
-    void activateItem(Pickup.Kind kind)
+    void activateItem(PickupInfo.Kind kind)
     {
-        if (inventory[(int)kind] > 0)
+        switch (kind)
         {
-            inventory[(int)kind]--;
-
-            switch(kind)
-            {
-                case Pickup.Kind.PizzaHeal:
+            case PickupInfo.Kind.PizzaHeal:
                 break;
-                case Pickup.Kind.PizzaShield:
+            case PickupInfo.Kind.PizzaShield:
                 break;
-                case Pickup.Kind.PizzaBoost:
+            case PickupInfo.Kind.PizzaBoost:
                 break;
-                case Pickup.Kind.PizzaSlow:
+            case PickupInfo.Kind.PizzaSlow:
                 break;
-                case Pickup.Kind.PlayerBoost:
+            case PickupInfo.Kind.PlayerBoost:
                 break;
-                default:
+            default:
                 break;
-            }
         }
     }
 

@@ -5,21 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Collider))]
 public class Pickup : MonoBehaviour
 {
-    // Used to index into player's inventory
-    // NumKinds must be last to pick up the number of categories we have
-    public enum Kind
-    {
-        PizzaHeal, PizzaShield, PizzaBoost, PizzaSlow,
-        PlayerBoost,
-        NumKinds
-    };
-
-    public float effectDuration;
-    [Range(0.0f, 100.0f)]
-    public float effectStrength;
-
-    public Kind kind;
-
+    public PickupInfo info;
     Collider col;
     // Start is called before the first frame update
     void Start()
@@ -32,8 +18,8 @@ public class Pickup : MonoBehaviour
     {
         if (player)
         {
-            player.inventory[(int)kind]++;
-            Debug.Log("Picked up a pickup with type " + kind.ToString() + ", new count: " + player.inventory[(int)kind]);
+            // player.inventory[(int)kind]++;
+            // Debug.Log("Picked up a pickup with type " + kind.ToString() + ", new count: " + player.inventory[(int)kind]);
         }
     }
 
