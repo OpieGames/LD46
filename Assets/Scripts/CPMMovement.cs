@@ -145,11 +145,11 @@ public class CPMMovement : MonoBehaviour
         //     dt -= 1.0f / fpsDisplayRate;
         // }
         /* Ensure that the cursor is locked into the screen */
-        if (Cursor.lockState != CursorLockMode.Locked)
-        {
-            if (Input.GetButtonDown("Fire1"))
-                Cursor.lockState = CursorLockMode.Locked;
-        }
+        // if (Cursor.lockState != CursorLockMode.Locked)
+        // {
+        //     if (Input.GetButtonDown("Fire1"))
+        //         Cursor.lockState = CursorLockMode.Locked;
+        // }
 
         /* Camera rotation stuff, mouse controls this shit */
         rotX -= Input.GetAxisRaw("Mouse Y") * xMouseSensitivity * 0.02f * playerSensitivity;
