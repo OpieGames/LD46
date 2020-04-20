@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   kind: 4
   effectStrength: 2
-  effectDuration: 10
+  effectDuration: 8
