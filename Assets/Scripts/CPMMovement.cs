@@ -361,6 +361,7 @@ public class CPMMovement : MonoBehaviour
             playerVelocity.y = jumpSpeed;
             wishJump = false;
             jumpedThisFrame = true;
+            GetComponent<AudioSource>().volume = 0.6f;
             GetComponent<AudioSource>().PlayOneShot(JumpSound);
         }
     }
