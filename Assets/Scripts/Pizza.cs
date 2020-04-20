@@ -15,13 +15,19 @@ public class Pizza : MonoBehaviour
         if (proj)
         {
             Debug.Log("pizza hit by projectile!");
-            CurrentHealth--;
+            
             Destroy(other.gameObject);
+            TakeDamage();
+            
+        }
+    }
 
-            if (CurrentHealth <= 0)
-            {
-                SceneManager.LoadScene("Scenes/Lose");
-            }
+    public void TakeDamage()
+    {
+        CurrentHealth--;
+        if (CurrentHealth <= 0)
+        {
+            SceneManager.LoadScene("Scenes/Lose");
         }
     }
 
