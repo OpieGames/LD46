@@ -250,7 +250,7 @@ public class Tower : MonoBehaviour
         projGO.transform.LookAt(targetLoc);
 
         proj.Parryable = false;
-        projGO.GetComponent<Rigidbody>().AddForce(projGO.transform.forward * ProjectileSpeed * 200);
+        projGO.GetComponent<Rigidbody>().AddForce(projGO.transform.forward * ProjectileSpeed * 160);
         shotCount++;
 
         Destroy(projGO, 4.0f); //TODO: add better cleanup
