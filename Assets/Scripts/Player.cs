@@ -32,6 +32,8 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        pollItemButtons();
+
         if (Input.GetButton("Block"))
         {
             ShieldBlock();
@@ -91,7 +93,55 @@ public class Player : MonoBehaviour
             }
         }
     }
-    
+
+    void pollItemButtons()
+    {
+        if (Input.GetButtonDown("1"))
+        {
+            activateItem(Pickup.Kind.PizzaHeal);
+        }
+        else if (Input.GetButtonDown("2"))
+        {
+            activateItem(Pickup.Kind.PizzaHeal);
+        }
+        else if (Input.GetButtonDown("3"))
+        {
+            activateItem(Pickup.Kind.PizzaHeal);
+        }
+        else if (Input.GetButtonDown("4"))
+        {
+            activateItem(Pickup.Kind.PizzaHeal);
+        }
+        else if (Input.GetButtonDown("5"))
+        {
+            activateItem(Pickup.Kind.PizzaHeal);
+        }
+    }
+
+    void activateItem(Pickup.Kind kind)
+    {
+        if (inventory[(int)kind] > 0)
+        {
+            inventory[(int)kind]--;
+
+            switch(kind)
+            {
+                case Pickup.Kind.PizzaHeal:
+                break;
+                case Pickup.Kind.PizzaShield:
+                break;
+                case Pickup.Kind.PizzaBoost:
+                break;
+                case Pickup.Kind.PizzaSlow:
+                break;
+                case Pickup.Kind.PlayerBoost:
+                break;
+                default:
+                break;
+            }
+        }
+    }
+
     public float CurrentParryStamina()
     {
         return curParryingHoldTime;
