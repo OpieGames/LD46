@@ -10,10 +10,18 @@ public class Pizza : MonoBehaviour
     public int MaxHealth = 6;
     public bool shielded = false;
     public MeshRenderer shieldGraphic;
+    public AudioClip HurtSound;
+    public AudioClip HealSound;
+    public AudioClip ShieldSound;
+    public AudioClip SlowSound;
+    public AudioClip BoostSound;
+
+    private AudioSource audioSource;
 
     public void Start()
     {
         shieldGraphic.enabled = shielded;
+        audioSource = GetComponent<AudioSource>();
     }
 
     public void Update()
@@ -44,6 +52,7 @@ public class Pizza : MonoBehaviour
     public void TakeDamage()
     {
         CurrentHealth--;
+        audioSource.PlayOneShot(HurtSound);
         if (CurrentHealth <= 0)
         {
             SceneManager.LoadScene("Scenes/Lose");
@@ -53,12 +62,24 @@ public class Pizza : MonoBehaviour
     public void Heal()
     {
         CurrentHealth = Mathf.Min(CurrentHealth + 1, MaxHealth);
+        audioSource.PlayOneShot(HealSound);
     }
 
     public IEnumerator Shield(float duration)
     {
         shielded = true;
+        audioSource.PlayOneShot(ShieldSound);
         yield return new WaitForSeconds(duration);
         shielded = false;
+    }
+
+    public void PizzaBoosted()
+    {
+        audioSource.PlayOneShot(BoostSound);
+    }
+
+    public void PizzaSlowed()
+    {
+        audioSource.PlayOneShot(SlowSound);
     }
 }

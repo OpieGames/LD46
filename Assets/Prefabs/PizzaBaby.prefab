@@ -744,6 +744,7 @@ GameObject:
   - component: {fileID: 8081388823234660304}
   - component: {fileID: 4236235683866955924}
   - component: {fileID: 2545307940245506378}
+  - component: {fileID: 4332981658388027851}
   m_Layer: 13
   m_Name: PizzaBaby
   m_TagString: Pizza
@@ -800,6 +801,11 @@ MonoBehaviour:
   MaxHealth: 6
   shielded: 0
   shieldGraphic: {fileID: 5056012711124059002}
+  HurtSound: {fileID: 8300000, guid: 3ffcbf5d7d6862544941bfad358470ae, type: 3}
+  HealSound: {fileID: 8300000, guid: 9d3cb23abe37984479e00893bdda8955, type: 3}
+  ShieldSound: {fileID: 8300000, guid: 7111980253e083641807c6e7bc4a25a2, type: 3}
+  SlowSound: {fileID: 8300000, guid: 9a93713c5b2a7454bb380c308b3d3aec, type: 3}
+  BoostSound: {fileID: 8300000, guid: 0d265870fdd6a3743a08bce0a2a8095d, type: 3}
 --- !u!54 &4236235683866955924
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -829,3 +835,109 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.57495683, y: 0.38, z: 1.0259174}
   m_Center: {x: 0, y: 0.6, z: -0.2255683}
+--- !u!82 &4332981658388027851
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7148675885317485041}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: -6291070573827837971, guid: 08b2483109f628a4793503277a4a524d,
+    type: 2}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 600
+  Pan2D: 0
+  rolloffMode: 2
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.41674042
+      inSlope: -13.9847
+      outSlope: -13.9847
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.20343646
+    - serializedVersion: 3
+      time: 0.08533923
+      value: 0.02414918
+      inSlope: -0.002783298
+      outSlope: -0.002783298
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 1
+      outWeight: 0.19677709
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -0.030697672
+      outSlope: -0.030697672
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.18412599
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

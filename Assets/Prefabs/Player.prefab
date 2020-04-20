@@ -438,6 +438,8 @@ MonoBehaviour:
   ParryRefillRatio: 0.1
   ShieldBlockSound: {fileID: 8300000, guid: d432c03b5eb6af94e8edfc22c9e4865f, type: 3}
   ShieldParrySound: {fileID: 8300000, guid: f1080978ea032ba40bd3a3e433a3a55a, type: 3}
+  PlayerBoostSound: {fileID: 8300000, guid: f96ba5e62efff9c4da092796601ba53c, type: 3}
+  PauseMenuRef: {fileID: 0}
 --- !u!136 &5393508524609271499
 CapsuleCollider:
   m_ObjectHideFlags: 0

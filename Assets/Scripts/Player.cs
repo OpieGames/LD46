@@ -28,6 +28,7 @@ public class Player : MonoBehaviour
 
     public AudioClip ShieldBlockSound;
     public AudioClip ShieldParrySound;
+    public AudioClip PlayerBoostSound;
 
     public GameObject PauseMenuRef;
 
@@ -220,6 +221,7 @@ public class Player : MonoBehaviour
                 if (inventory.pizzaBoosts > 0)
                 {
                     inventory.pizzaBoosts--;
+                    pizza.PizzaBoosted();
                     StartCoroutine(pizza.GetComponent<PathFollower>().ApplyBoost(info.effectDuration, info.effectStrength));
                 }
                 break;
@@ -227,6 +229,7 @@ public class Player : MonoBehaviour
                 if (inventory.pizzaSlows > 0)
                 {
                     inventory.pizzaSlows--;
+                    pizza.PizzaSlowed();
                     StartCoroutine(pizza.GetComponent<PathFollower>().ApplySlow(info.effectDuration, info.effectStrength));
                 }
                 break;
@@ -234,6 +237,7 @@ public class Player : MonoBehaviour
                 if (inventory.playerBoosts > 0)
                 {
                     inventory.playerBoosts--;
+                    audioSource.PlayOneShot(PlayerBoostSound);
                     StartCoroutine(playerMovement.ApplyBoost(info.effectDuration, info.effectStrength));
                 }
                 break;
