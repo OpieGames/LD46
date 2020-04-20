@@ -2835,6 +2835,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a1edd6d4382f1e347a456e7f4cb75817, type: 3}
+--- !u!114 &260789800 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4883074915009398066, guid: a1edd6d4382f1e347a456e7f4cb75817,
+    type: 3}
+  m_PrefabInstance: {fileID: 260789799}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7895d2dbdd3f73040afeb245c10e1ff9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!43 &306732243
 Mesh:
   m_ObjectHideFlags: 16
@@ -16770,6 +16782,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1085494573832181840, guid: 245c28228692c794cb600b7a60601393,
+        type: 3}
+      propertyPath: laserWall
+      value: 
+      objectReference: {fileID: 260789800}
     - target: {fileID: 4053880810490253489, guid: 245c28228692c794cb600b7a60601393,
         type: 3}
       propertyPath: m_Name
