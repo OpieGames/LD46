@@ -105,6 +105,9 @@ public class CPMMovement : MonoBehaviour
     private float defaultMaxTopSpeed;
     private float playerSensitivity;
 
+    private float speedBoost = 0.0f;
+    private float maxSpeedBoost = 0.0f;
+
     private void Start()
     {
         // Hide the cursor
@@ -208,11 +211,23 @@ public class CPMMovement : MonoBehaviour
             transform.position.z);
 
         Vector2 HoriVel = new Vector2(playerVelocity.x, playerVelocity.z);
-        if (HoriVel.magnitude > maxTopSpeed)
+        if (HoriVel.magnitude > (maxTopSpeed + maxSpeedBoost))
         {
-            HoriVel = HoriVel.normalized*maxTopSpeed;
+            HoriVel = HoriVel.normalized*(maxTopSpeed + maxSpeedBoost);
             playerVelocity = new Vector3(HoriVel.x, playerVelocity.y, HoriVel.y);
         }
+    }
+    
+    public IEnumerator ApplyBoost(float duration, float strengthPercent)
+    {
+        float boostAmount = strengthPercent / 100.0f * moveSpeed;
+        Debug.LogFormat("strengthPercent: {0},  moveSpeed: {1}", strengthPercent, moveSpeed);
+        Debug.LogFormat("boostAmount: {0}", boostAmount);
+        speedBoost += boostAmount;
+        maxSpeedBoost += boostAmount;
+        yield return new WaitForSeconds(duration);
+        speedBoost -= boostAmount;
+        maxSpeedBoost -= boostAmount;
     }
 
     public void RefreshSettings()
@@ -265,7 +280,7 @@ public class CPMMovement : MonoBehaviour
         wishdir = transform.TransformDirection(wishdir);
 
         float wishspeed = wishdir.magnitude;
-        wishspeed *= moveSpeed;
+        wishspeed *= (moveSpeed + speedBoost);
 
         wishdir.Normalize();
         moveDirectionNorm = wishdir;
@@ -355,7 +370,7 @@ public class CPMMovement : MonoBehaviour
         moveDirectionNorm = wishdir;
 
         var wishspeed = wishdir.magnitude;
-        wishspeed *= moveSpeed;
+        wishspeed *= (moveSpeed + speedBoost);
 
         Accelerate(wishdir, wishspeed, runAcceleration);
 

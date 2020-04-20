@@ -213,28 +213,28 @@ public class Player : MonoBehaviour
                 if (inventory.pizzaShields > 0)
                 {
                     inventory.pizzaShields--;
-                    pizza.Shield(info.effectDuration);
+                    StartCoroutine(pizza.Shield(info.effectDuration));
                 }
                 break;
             case PickupInfo.Kind.PizzaBoost:
                 if (inventory.pizzaBoosts > 0)
                 {
                     inventory.pizzaBoosts--;
-                    pizza.GetComponent<PathFollower>().ApplyBoost(info.effectDuration, info.effectStrength);
+                    StartCoroutine(pizza.GetComponent<PathFollower>().ApplyBoost(info.effectDuration, info.effectStrength));
                 }
                 break;
             case PickupInfo.Kind.PizzaSlow:
                 if (inventory.pizzaSlows > 0)
                 {
                     inventory.pizzaSlows--;
-                    pizza.GetComponent<PathFollower>().ApplyBoost(info.effectDuration, info.effectStrength);
+                    StartCoroutine(pizza.GetComponent<PathFollower>().ApplyBoost(info.effectDuration, info.effectStrength));
                 }
                 break;
             case PickupInfo.Kind.PlayerBoost:
                 if (inventory.playerBoosts > 0)
                 {
                     inventory.playerBoosts--;
-                    // TODO: Apply player boost
+                    StartCoroutine(playerMovement.ApplyBoost(info.effectDuration, info.effectStrength));
                 }
                 break;
             default:
