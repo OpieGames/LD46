@@ -782,7 +782,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PathHolder: {fileID: 0}
-  Speed: 2
+  Speed: 1
   TurnSpeed: 180
   WaitAtPointTime: 0
   CurrentSpeed: 0

@@ -95,6 +95,15 @@ public class Tower : MonoBehaviour
         {
             timeSinceAttack += 1.0f * Time.deltaTime;
         }
+        
+        if (Type == TowerType.Sniper)
+        {
+            if (shotCount > 3)
+            {
+                Instantiate(ExplosionParticle, transform.position, new Quaternion());
+                Destroy(this.gameObject);
+            }
+        }
     }
 
     private bool CanLOS()
@@ -170,17 +179,6 @@ public class Tower : MonoBehaviour
             Instantiate(ExplosionParticle, transform.position, new Quaternion());
             Destroy(proj.gameObject);
             Destroy(this.gameObject);
-            
-            
-        }
-
-        if (Type == TowerType.Sniper)
-        {
-            if (shotCount > 3)
-            {
-                Instantiate(ExplosionParticle, transform.position, new Quaternion());
-                Destroy(this.gameObject);
-            }
         }
     }
 
@@ -221,7 +219,9 @@ public class Tower : MonoBehaviour
         Vector3 targetLoc = PredictedPizzaTarget();
         projGO.transform.LookAt(targetLoc);
 
-        if (shotCount >= 2)
+        float rand = Random.Range(0.0f, 1.0f);
+
+        if (rand <= 0.4f)
         {
             proj.Parryable = true;
             projGO.GetComponent<Rigidbody>().AddForce(projGO.transform.forward * ProjectileSpeed * 90);
