@@ -12,6 +12,8 @@ public class PathFollower : MonoBehaviour
     public float WaitAtPointTime = 0.0f;
     public float CurrentSpeed;
 
+    private float speedModifier = 0.0f;
+
     private void Start()
     {
         if (!PathHolder)
@@ -53,7 +55,7 @@ public class PathFollower : MonoBehaviour
         while (true)
         {
             CurrentSpeed = Speed;
-            transform.position = Vector3.MoveTowards(transform.position, targetWaypoint, Speed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, targetWaypoint, (Speed + speedModifier) * Time.deltaTime);
             if (transform.position == targetWaypoint)
             {
                 targetWaypointIndex = targetWaypointIndex + 1;
@@ -82,7 +84,23 @@ public class PathFollower : MonoBehaviour
             lm.NextLevel();
     }
 
-    #if UNITY_EDITOR
+    public IEnumerator ApplyBoost(float duration, float strengthPercent)
+    {
+        float boostAmount = strengthPercent / 100.0f * Speed;
+        speedModifier += boostAmount;
+        yield return new WaitForSeconds(duration);
+        speedModifier -= boostAmount;
+    }
+
+    public IEnumerator ApplySlow(float duration, float strengthPercent)
+    {
+        float slowAmount = strengthPercent / 100.0f * Speed;
+        speedModifier -= slowAmount;
+        yield return new WaitForSeconds(duration);
+        speedModifier += slowAmount;
+    }
+
+#if UNITY_EDITOR
     private void OnDrawGizmos()
     {
         if (Application.isEditor && PathHolder)
@@ -110,13 +128,13 @@ public class PathFollower : MonoBehaviour
                     {
                         Gizmos.DrawIcon(nextPos, "pathnode.tga", false);
                     }
-                    // 
+                    //
                     Gizmos.DrawLine(prevPos, nextPos);
                     prevPos = nextPos;
                 }
             }
         }
     }
-    #endif
+#endif
 
 }

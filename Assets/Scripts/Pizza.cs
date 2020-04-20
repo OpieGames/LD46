@@ -8,6 +8,7 @@ public class Pizza : MonoBehaviour
 {
     public int CurrentHealth = 6;
     public int MaxHealth = 6;
+    public bool shielded = false;
 
     private void OnCollisionEnter(Collision other)
     {
@@ -17,7 +18,8 @@ public class Pizza : MonoBehaviour
             //Debug.Log("pizza hit by projectile!");
 
             Destroy(other.gameObject);
-            TakeDamage();
+
+            if (!shielded) TakeDamage();
 
         }
     }
@@ -36,8 +38,10 @@ public class Pizza : MonoBehaviour
         CurrentHealth = Mathf.Min(CurrentHealth + 1, MaxHealth);
     }
 
-    public void GainShield()
+    public IEnumerator Shield(float duration)
     {
-
+        shielded = true;
+        yield return new WaitForSeconds(duration);
+        shielded = false;
     }
 }

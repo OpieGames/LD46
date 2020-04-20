@@ -7,6 +7,7 @@ public class Pickup : MonoBehaviour
 {
     public PickupInfo info;
     Collider col;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,8 +19,31 @@ public class Pickup : MonoBehaviour
     {
         if (player)
         {
-            // player.inventory[(int)kind]++;
-            // Debug.Log("Picked up a pickup with type " + kind.ToString() + ", new count: " + player.inventory[(int)kind]);
+            switch (info.kind)
+            {
+                case PickupInfo.Kind.PizzaHeal:
+                    player.inventory.pizzaHeals++;
+                    Debug.Log("Picked up a pickup with type " + info.kind.ToString() + ", new count: " + player.inventory.pizzaHeals);
+                    break;
+                case PickupInfo.Kind.PizzaShield:
+                    player.inventory.pizzaShields++;
+                    Debug.Log("Picked up a pickup with type " + info.kind.ToString() + ", new count: " + player.inventory.pizzaShields);
+                    break;
+                case PickupInfo.Kind.PizzaBoost:
+                    player.inventory.pizzaBoosts++;
+                    Debug.Log("Picked up a pickup with type " + info.kind.ToString() + ", new count: " + player.inventory.pizzaBoosts);
+                    break;
+                case PickupInfo.Kind.PizzaSlow:
+                    player.inventory.pizzaSlows++;
+                    Debug.Log("Picked up a pickup with type " + info.kind.ToString() + ", new count: " + player.inventory.pizzaSlows);
+                    break;
+                case PickupInfo.Kind.PlayerBoost:
+                    player.inventory.playerBoosts++;
+                    Debug.Log("Picked up a pickup with type " + info.kind.ToString() + ", new count: " + player.inventory.playerBoosts);
+                    break;
+                default:
+                    break;
+            }
         }
     }
 
@@ -28,8 +52,8 @@ public class Pickup : MonoBehaviour
         Debug.Log("Pickup trigger entered");
         Player player = other.GetComponent<Player>();
         if (!player) return;
+        // PickedUp(player);
         PickedUp(player);
-
         GameObject.Destroy(this.gameObject);
     }
 }
