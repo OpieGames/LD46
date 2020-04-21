@@ -98,7 +98,7 @@ public class Tower : MonoBehaviour
         
         if (Type == TowerType.Sniper)
         {
-            if (shotCount > 3)
+            if (shotCount > 2)
             {
                 Instantiate(ExplosionParticle, transform.position, new Quaternion());
                 Destroy(this.gameObject);
@@ -177,8 +177,7 @@ public class Tower : MonoBehaviour
         {
             Debug.LogFormat("{0} hit by parried projectile!", this.name);
             Instantiate(ExplosionParticle, transform.position, new Quaternion());
-            Pizza.GetComponent<Pizza>().PathFollower.Speed += 0.12f;
-            Debug.Log(Pizza.GetComponent<Pizza>().PathFollower.Speed);
+            Pizza.GetComponent<Pizza>().PathFollower.Speed += 0.25f;
             Destroy(proj.gameObject);
             Destroy(this.gameObject);
         }
@@ -223,7 +222,7 @@ public class Tower : MonoBehaviour
 
         float rand = Random.Range(0.0f, 1.0f);
 
-        if (rand <= 0.4f)
+        if (rand <= 0.5f)
         {
             proj.Parryable = true;
             projGO.GetComponent<Rigidbody>().AddForce(projGO.transform.forward * ProjectileSpeed * 90);

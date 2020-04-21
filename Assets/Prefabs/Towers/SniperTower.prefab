@@ -57,7 +57,7 @@ MonoBehaviour:
   ExplosionParticle: {fileID: 5896198741970858781, guid: fc8a742d922c444498dead3b8fea4131,
     type: 3}
   Range: 24
-  AttackTime: 2.4
+  AttackTime: 3
   ProjectileSpeed: 6
   ProjectileInaccuracy: 0
   ShotPredictionFudgeFactor: 0.2
