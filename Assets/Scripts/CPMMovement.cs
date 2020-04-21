@@ -154,8 +154,8 @@ public class CPMMovement : MonoBehaviour
         // }
 
         /* Camera rotation stuff, mouse controls this shit */
-        rotX -= Input.GetAxisRaw("Mouse Y") * xMouseSensitivity * 0.02f * playerSensitivity;
-        rotY += Input.GetAxisRaw("Mouse X") * yMouseSensitivity * 0.02f * playerSensitivity;
+        rotX -= Input.GetAxisRaw("Mouse Y") * xMouseSensitivity * 0.04f * playerSensitivity;
+        rotY += Input.GetAxisRaw("Mouse X") * yMouseSensitivity * 0.04f * playerSensitivity;
 
         // Clamp the X rotation
         if (rotX < -90)
