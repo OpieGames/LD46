@@ -177,6 +177,8 @@ public class Tower : MonoBehaviour
         {
             Debug.LogFormat("{0} hit by parried projectile!", this.name);
             Instantiate(ExplosionParticle, transform.position, new Quaternion());
+            Pizza.GetComponent<Pizza>().PathFollower.Speed += 0.12f;
+            Debug.Log(Pizza.GetComponent<Pizza>().PathFollower.Speed);
             Destroy(proj.gameObject);
             Destroy(this.gameObject);
         }

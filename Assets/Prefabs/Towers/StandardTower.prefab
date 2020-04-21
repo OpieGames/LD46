@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1844556886377379200}
   m_Layer: 14
   m_Name: StandardTower
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -63,7 +63,7 @@ MonoBehaviour:
   ShotPredictionFudgeFactor: 0.7
   layersToIgnore:
     serializedVersion: 2
-    m_Bits: 23552
+    m_Bits: 56320
   fireSound: {fileID: 8300000, guid: 9cea0c17357e4a84789ed7ecbba17bba, type: 3}
   chargeSound: {fileID: 0}
 --- !u!54 &8555991076842603272

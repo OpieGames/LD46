@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 4604427660008416549}
   m_Layer: 14
   m_Name: SniperTower
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -57,13 +57,13 @@ MonoBehaviour:
   ExplosionParticle: {fileID: 5896198741970858781, guid: fc8a742d922c444498dead3b8fea4131,
     type: 3}
   Range: 24
-  AttackTime: 3
+  AttackTime: 2.4
   ProjectileSpeed: 6
   ProjectileInaccuracy: 0
   ShotPredictionFudgeFactor: 0.2
   layersToIgnore:
     serializedVersion: 2
-    m_Bits: 19456
+    m_Bits: 52224
   fireSound: {fileID: 8300000, guid: 9cea0c17357e4a84789ed7ecbba17bba, type: 3}
   chargeSound: {fileID: 8300000, guid: 17662d34ab865964eb5cb0bcbc52942f, type: 3}
 --- !u!54 &8555991076842603272

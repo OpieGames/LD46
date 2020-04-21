@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2517194751653887391}
   - component: {fileID: 1272560032807790281}
   - component: {fileID: 4213826144758963304}
-  m_Layer: 14
+  m_Layer: 15
   m_Name: wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88,7 +88,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7293246614002048309}
-  m_Layer: 14
+  m_Layer: 15
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -123,9 +123,9 @@ GameObject:
   - component: {fileID: 4883074915009398066}
   - component: {fileID: 7023036095291093025}
   - component: {fileID: 7193673360794034555}
-  m_Layer: 14
+  m_Layer: 15
   m_Name: LaserWall
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -281,7 +281,7 @@ GameObject:
   - component: {fileID: 3087967439021443397}
   - component: {fileID: 5694044514559059865}
   - component: {fileID: 7657422956045049809}
-  m_Layer: 14
+  m_Layer: 15
   m_Name: sides
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -15,13 +15,17 @@ public class Pizza : MonoBehaviour
     public AudioClip ShieldSound;
     public AudioClip SlowSound;
     public AudioClip BoostSound;
+    public int TowersKilled = 0;
+    public PathFollower PathFollower;
 
     private AudioSource audioSource;
-
     public void Start()
     {
         shieldGraphic.enabled = shielded;
         audioSource = GetComponent<AudioSource>();
+        PathFollower = GetComponent<PathFollower>();
+        
+        InvokeRepeating(nameof(TowerCheckTick), 1.0f, 1.0f);
     }
 
     public void Update()
@@ -31,6 +35,16 @@ public class Pizza : MonoBehaviour
             shieldGraphic.enabled = true;
         } else if (!shielded && shieldGraphic.enabled) {
             shieldGraphic.enabled = false;
+        }
+    }
+
+    void TowerCheckTick()
+    {
+        GameObject[] towers = GameObject.FindGameObjectsWithTag("Tower");
+        if (towers.Length <= 0)
+        {
+            Debug.Log("all towers dead, zoomin'");
+            PathFollower.Speed = 8.0f;
         }
     }
 

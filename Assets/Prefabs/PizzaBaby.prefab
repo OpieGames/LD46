@@ -782,7 +782,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PathHolder: {fileID: 0}
-  Speed: 1
+  Speed: 1.1
   TurnSpeed: 180
   WaitAtPointTime: 0
   CurrentSpeed: 0
@@ -807,6 +807,8 @@ MonoBehaviour:
   ShieldSound: {fileID: 8300000, guid: 7111980253e083641807c6e7bc4a25a2, type: 3}
   SlowSound: {fileID: 8300000, guid: 9a93713c5b2a7454bb380c308b3d3aec, type: 3}
   BoostSound: {fileID: 8300000, guid: 0d265870fdd6a3743a08bce0a2a8095d, type: 3}
+  TowersKilled: 0
+  PathFollower: {fileID: 0}
 --- !u!54 &4236235683866955924
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -24,6 +24,7 @@ public class LaserWall : MonoBehaviour
         if (Enabled)
         {
             Debug.Log("Laser Wall disabled");
+            this.tag = "Untagged";
             gameObject.GetComponent<BoxCollider>().enabled = false;
             LaserMesh.enabled = false;
             this.GetComponent<AudioSource>().PlayOneShot(DisableSound);
