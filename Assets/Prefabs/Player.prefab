@@ -273,7 +273,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 31799
+    m_Bits: 64567
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -434,7 +434,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e74b14d91308fbd4cae0d3ed4a7c9c57, type: 2}
   - {fileID: 11400000, guid: 3644e53360c546a47a281098324728df, type: 2}
   - {fileID: 11400000, guid: cefdae4b5c0672d4ea27a77b2c8adb03, type: 2}
-  ParryHoldTime: 0.15
+  ParryHoldTime: 0.2
   ParryRefillRatio: 0.1
   ShieldBlockSound: {fileID: 8300000, guid: d432c03b5eb6af94e8edfc22c9e4865f, type: 3}
   ShieldParrySound: {fileID: 8300000, guid: f1080978ea032ba40bd3a3e433a3a55a, type: 3}
